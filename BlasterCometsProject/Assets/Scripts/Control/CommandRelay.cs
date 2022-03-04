@@ -20,24 +20,6 @@ public class CommandRelay : MonoBehaviour
     [Tooltip("Thuster component allowing the GameObject to move forward.")]
     [SerializeField] private Thruster thruster;
 
-    #region Properties
-    public Queue<ICommand> CommandStream { get; set; }
-    #endregion
-
-    #region MonoBehaviour Methods
-    private void Awake()
-    {
-        CommandStream = new Queue<ICommand>();
-    }
-    private void Update()
-    {
-        if (CommandStream.Count > 0)
-        {
-            CommandStream.Dequeue().Execute(this);
-        }
-    }
-    #endregion
-
     #region Movement
     /// <summary>
     /// Starts rotating the GameObject counter-clockwise.
