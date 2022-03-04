@@ -11,9 +11,26 @@ public class PlayerController : MonoBehaviour
     /// CommandRelay of the player character GameObject.
     /// </summary>
     [Tooltip("CommandRelay of the player character GameObject.")]
-    [SerializeField] private CommandRelay commandRelay;
+    [SerializeField] private CommandRelay playerRelay;
 
     #region Input Action Responses
+    /// <summary>
+    /// Fires a projectile.
+    /// </summary>
+    /// <param name="context">Callback context of the controlling input 
+    /// action.</param>
+    public void OnFireAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            playerRelay.StartFire();
+        }
+        else if (context.canceled)
+        {
+            playerRelay.StopFire();
+        }
+    }
+
     /// <summary>
     /// Rotates the controlled GameObject counter-clockwise.
     /// </summary>
@@ -23,11 +40,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            commandRelay.StartRotationLeft();
+            playerRelay.StartRotationLeft();
         }
         else if (context.canceled)
         {
-            commandRelay.StopRotationLeft();
+            playerRelay.StopRotationLeft();
         }
     }
 
@@ -40,11 +57,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            commandRelay.StartRotationRight();
+            playerRelay.StartRotationRight();
         }
         else if (context.canceled)
         {
-            commandRelay.StopRotationRight();
+            playerRelay.StopRotationRight();
         }
     }
 
@@ -57,11 +74,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            commandRelay.StartThruster();
+            playerRelay.StartThruster();
         }
         else if (context.canceled)
         {
-            commandRelay.StopThruster();
+            playerRelay.StopThruster();
         }
     }
     #endregion

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +6,13 @@ using UnityEngine;
 /// </summary>
 public class CommandRelay : MonoBehaviour
 {
+    /// <summary>
+    /// Weapon component allowing the GameObject to fire projectiles.
+    /// </summary>
+    [Header("Combat")]
+    [Tooltip("Weapon component allowing the GameObject to fire projectiles.")]
+    [SerializeField] private Weapon weapon;
+
     /// <summary>
     /// Rotator component allowing the GameObject to rotate.
     /// </summary>
@@ -19,6 +25,30 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     [Tooltip("Thuster component allowing the GameObject to move forward.")]
     [SerializeField] private Thruster thruster;
+
+    #region Combat
+    /// <summary>
+    /// Signals that the weapon should begin firing.
+    /// </summary>
+    public void StartFire()
+    {
+        if (weapon != null)
+        {
+            weapon.IsFiring = true;
+        }
+    }
+
+    /// <summary>
+    /// Signals that the weapon should cease firing.
+    /// </summary>
+    public void StopFire()
+    {
+        if (weapon != null)
+        {
+            weapon.IsFiring = false;
+        }
+    }
+    #endregion
 
     #region Movement
     /// <summary>
