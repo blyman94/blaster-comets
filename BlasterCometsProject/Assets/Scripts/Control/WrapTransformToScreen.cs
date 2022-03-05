@@ -116,17 +116,13 @@ public class WrapTransformToScreen : MonoBehaviour
     /// </summary>
     private void CalculateCameraBounds()
     {
-        maxXBound = mainCamera.transform.position.x +
-            mainCamera.orthographicSize;
-
-        maxYBound = mainCamera.transform.position.y +
-            mainCamera.orthographicSize;
-
-        minXBound = mainCamera.transform.position.x -
-            mainCamera.orthographicSize;
-
-        minYBound = mainCamera.transform.position.y -
-            mainCamera.orthographicSize;
+        mainCamera.GetBounds(out float maxXBound, out float maxYBound,
+            out float minXBound, out float minYBound);
+            
+        this.maxXBound = maxXBound;
+        this.maxYBound = maxYBound;
+        this.minXBound = minXBound;
+        this.minYBound = minYBound;
     }
 
     /// <summary>
