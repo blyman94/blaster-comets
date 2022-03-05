@@ -21,13 +21,16 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnFireAction(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (playerRelay != null)
         {
-            playerRelay.StartFire();
-        }
-        else if (context.canceled)
-        {
-            playerRelay.StopFire();
+            if (context.started)
+            {
+                playerRelay.StartFire();
+            }
+            else if (context.canceled)
+            {
+                playerRelay.StopFire();
+            }
         }
     }
 
@@ -38,13 +41,16 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnRotateLeftAction(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (playerRelay != null)
         {
-            playerRelay.StartRotationLeft();
-        }
-        else if (context.canceled)
-        {
-            playerRelay.StopRotationLeft();
+            if (context.started)
+            {
+                playerRelay.StartRotationLeft();
+            }
+            else if (context.canceled)
+            {
+                playerRelay.StopRotationLeft();
+            }
         }
     }
 
@@ -55,13 +61,16 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnRotateRightAction(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (playerRelay != null)
         {
-            playerRelay.StartRotationRight();
-        }
-        else if (context.canceled)
-        {
-            playerRelay.StopRotationRight();
+            if (context.started)
+            {
+                playerRelay.StartRotationRight();
+            }
+            else if (context.canceled)
+            {
+                playerRelay.StopRotationRight();
+            }
         }
     }
 
@@ -72,13 +81,16 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnThrusterAction(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (playerRelay != null)
         {
-            playerRelay.StartThruster();
-        }
-        else if (context.canceled)
-        {
-            playerRelay.StopThruster();
+            if (context.started)
+            {
+                playerRelay.StartThruster();
+            }
+            else if (context.canceled)
+            {
+                playerRelay.StopThruster();
+            }
         }
     }
     #endregion

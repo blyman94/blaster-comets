@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4136258213517426446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135833, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: maxTravelSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: minTravelSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: meteoroidSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: meteoroidSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d43aba666da6ce4c956055031fc3356, type: 3}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: meteoroidSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: a4ee527afb7a96e4883052b40ea3ba3f, type: 3}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: meteoroidSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3dc3fd376ec7a8b47a4207b823392e63, type: 3}
+    - target: {fileID: 989486511033135835, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_Name
+      value: MeteoroidSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 989486511736304600, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d43aba666da6ce4c956055031fc3356, type: 3}
+    - target: {fileID: 989486511736304601, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_Name
+      value: MeteoroidSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276581957789910716, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_Radius
+      value: 0.125
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
