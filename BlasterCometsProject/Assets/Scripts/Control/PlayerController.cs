@@ -7,11 +7,12 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    #region Properties
     /// <summary>
-    /// CommandRelay of the player character GameObject.
+    /// CommandRelay of the GameObject to be controlled.
     /// </summary>
-    [Tooltip("CommandRelay of the player character GameObject.")]
-    [SerializeField] private CommandRelay playerRelay;
+    public CommandRelay RelayToControl { get; set; }
+    #endregion
 
     #region Input Action Responses
     /// <summary>
@@ -21,15 +22,15 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnFireAction(InputAction.CallbackContext context)
     {
-        if (playerRelay != null)
+        if (RelayToControl != null)
         {
             if (context.started)
             {
-                playerRelay.StartFire();
+                RelayToControl.StartFire();
             }
             else if (context.canceled)
             {
-                playerRelay.StopFire();
+                RelayToControl.StopFire();
             }
         }
     }
@@ -41,15 +42,15 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnRotateLeftAction(InputAction.CallbackContext context)
     {
-        if (playerRelay != null)
+        if (RelayToControl != null)
         {
             if (context.started)
             {
-                playerRelay.StartRotationLeft();
+                RelayToControl.StartRotationLeft();
             }
             else if (context.canceled)
             {
-                playerRelay.StopRotationLeft();
+                RelayToControl.StopRotationLeft();
             }
         }
     }
@@ -61,15 +62,15 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnRotateRightAction(InputAction.CallbackContext context)
     {
-        if (playerRelay != null)
+        if (RelayToControl != null)
         {
             if (context.started)
             {
-                playerRelay.StartRotationRight();
+                RelayToControl.StartRotationRight();
             }
             else if (context.canceled)
             {
-                playerRelay.StopRotationRight();
+                RelayToControl.StopRotationRight();
             }
         }
     }
@@ -81,15 +82,15 @@ public class PlayerController : MonoBehaviour
     /// action.</param>
     public void OnThrusterAction(InputAction.CallbackContext context)
     {
-        if (playerRelay != null)
+        if (RelayToControl != null)
         {
             if (context.started)
             {
-                playerRelay.StartThruster();
+                RelayToControl.StartThruster();
             }
             else if (context.canceled)
             {
-                playerRelay.StopThruster();
+                RelayToControl.StopThruster();
             }
         }
     }

@@ -68,6 +68,17 @@ public class Meteoroid : MonoBehaviour, IPoolObject
         ChooseRandomSprite();
         ChooseRandomVelocity();
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Meteoroid"))
+        {
+            CombatTarget target = other.GetComponent<CombatTarget>();
+            if (target != null)
+            {
+                target.TakeHit();
+            }
+        }
+    }
     #endregion
 
     /// <summary>

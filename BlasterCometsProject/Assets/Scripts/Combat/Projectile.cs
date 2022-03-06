@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         CombatTarget hitTarget = other.GetComponent<CombatTarget>();
         if (hitTarget != null)
         {
-            hitTarget.TakeProjectileHit();
+            hitTarget.TakeHit();
         }
         OriginPool.Release(gameObject);
     }

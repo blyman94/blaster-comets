@@ -16,7 +16,7 @@ public class CombatTarget : MonoBehaviour
     /// Invokes the CombatTarget's OnHitResponse, which is configured in the 
     /// inspector.
     /// </summary>
-    public void TakeProjectileHit()
+    public void TakeHit()
     {
         OnHitResponse.Invoke();
     }

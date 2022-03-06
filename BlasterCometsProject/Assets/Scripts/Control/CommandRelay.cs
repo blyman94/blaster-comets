@@ -26,6 +26,19 @@ public class CommandRelay : MonoBehaviour
     [Tooltip("Thuster component allowing the GameObject to move forward.")]
     [SerializeField] private Thruster thruster;
 
+    #region General
+    /// <summary>
+    /// Resets the CommandRelay to its initial state.
+    /// </summary>
+    public void ResetRelay()
+    {
+        StopFire();
+        StopRotationLeft();
+        StopRotationRight();
+        StopThrusterImmediate();
+    }
+    #endregion
+
     #region Combat
     /// <summary>
     /// Signals that the weapon should begin firing.
@@ -80,6 +93,10 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     public void StartThruster()
     {
+        if (!thruster.gameObject.activeInHierarchy)
+        {
+            thruster.gameObject.SetActive(true);
+        }
         if (thruster != null)
         {
             thruster.Active = true;
@@ -116,6 +133,17 @@ public class CommandRelay : MonoBehaviour
         if (thruster != null)
         {
             thruster.Active = false;
+        }
+    }
+
+    /// <summary>
+    /// Immediately stops moving the GameObject in its upward direction.
+    /// </summary>
+    public void StopThrusterImmediate()
+    {
+        if (thruster != null)
+        {
+            thruster.gameObject.SetActive(false);
         }
     }
     #endregion
