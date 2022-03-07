@@ -95,5 +95,9 @@ PrefabInstance:
       propertyPath: OnHitResponse.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8725450987845137113, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: OnHitWithPointsResponse.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}

@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8857c8ea48a4014c9c4f1ac1d8fb4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  awardsPoints: 1
   rigidbody2D: {fileID: 2136459447534603201}
+  targetTags:
+  - Meteoroid
+  - Bogey
 --- !u!58 &245545091542756286
 CircleCollider2D:
   m_ObjectHideFlags: 0

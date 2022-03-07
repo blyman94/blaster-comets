@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 /// Allows the player to control a GameObject utilizing an Input Action asset 
 /// from the Input System package.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IController
 {
-    #region Properties
+    #region IController Methods
     /// <summary>
     /// CommandRelay of the GameObject to be controlled.
     /// </summary>

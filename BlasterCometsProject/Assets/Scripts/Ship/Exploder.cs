@@ -1,32 +1,32 @@
 using UnityEngine;
 
 /// <summary>
-/// Module that handles the ship death sequence.
+/// Module that explodes a bogey or a ship.
 /// </summary>
-public class ShipExploder : MonoBehaviour
+public class Exploder : MonoBehaviour
 {
     /// <summary>
-    /// Delegate to signal that the ship has exploded.
+    /// Delegate to signal that the exploding entity has exploded.
     /// </summary>
-    public SimpleDelegate ShipExploded;
+    public SimpleDelegate EntityExploded;
 
     /// <summary>
-    /// Collider of the ship.
+    /// Collider of the exploding entity.
     /// </summary>
-    [Tooltip("Collider of the ship.")]
-    [SerializeField] private PolygonCollider2D shipCollider;
+    [Tooltip("Collider of the exploding entity.")]
+    [SerializeField] private Collider2D entityCollider;
 
     /// <summary>
-    /// SpriteRenderer that represents the ship.
+    /// SpriteRenderer that represents the exploding entity.
     /// </summary>
-    [Tooltip("SpriteRenderer that represents the ship.")]
-    [SerializeField] private SpriteRenderer shipRenderer;
+    [Tooltip("SpriteRenderer that represents the exploding entity.")]
+    [SerializeField] private SpriteRenderer entityRenderer;
 
     /// <summary>
-    /// CommandRelay of the ship.
+    /// CommandRelay of the exploding entity.
     /// </summary>
-    [Tooltip("CommandRelay of the ship.")]
-    [SerializeField] private CommandRelay shipRelay;
+    [Tooltip("CommandRelay of the exploding entity.")]
+    [SerializeField] private CommandRelay entityRelay;
 
     /// <summary>
     /// Color of the ship's sprite renderer.
@@ -43,13 +43,13 @@ public class ShipExploder : MonoBehaviour
     /// <summary>
     /// Controller controlling the ship.
     /// </summary>
-    public PlayerController ShipController { get; set; }
+    public IController EntityController { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
     private void Awake()
     {
-        originalColor = shipRenderer.color;
+        originalColor = entityRenderer.color;
     }
     #endregion
 
@@ -58,24 +58,24 @@ public class ShipExploder : MonoBehaviour
     /// </summary>
     public void Explode()
     {
-        if (ShipController != null)
+        if (EntityController != null)
         {
-            ShipController.RelayToControl = null;
+            EntityController.RelayToControl = null;
         }
 
-        if (shipCollider != null)
+        if (entityCollider != null)
         {
-            shipCollider.enabled = false;
+            entityCollider.enabled = false;
         }
 
-        if (shipRenderer != null)
+        if (entityRenderer != null)
         {
-            shipRenderer.color = Color.clear;
+            entityRenderer.color = Color.clear;
         }
 
-        if (shipRelay != null)
+        if (entityRelay != null)
         {
-            shipRelay.ResetRelay();
+            entityRelay.ResetRelay();
         }
 
         if (ExplosionPool != null)
@@ -85,7 +85,7 @@ public class ShipExploder : MonoBehaviour
             explosionObject.SetActive(true);
         }
 
-        ShipExploded?.Invoke();
+        EntityExploded?.Invoke();
     }
 
     /// <summary>
@@ -93,13 +93,13 @@ public class ShipExploder : MonoBehaviour
     /// </summary>
     public void Unexplode()
     {
-        if (shipRenderer != null)
+        if (entityRenderer != null)
         {
-            shipRenderer.color = originalColor;
+            entityRenderer.color = originalColor;
         }
-        if (shipCollider != null)
+        if (entityCollider != null)
         {
-            shipCollider.enabled = true;
+            entityCollider.enabled = true;
         }
     }
 }

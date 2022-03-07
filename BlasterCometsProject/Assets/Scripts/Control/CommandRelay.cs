@@ -7,6 +7,11 @@ using UnityEngine;
 public class CommandRelay : MonoBehaviour
 {
     /// <summary>
+    /// Rigidbody2D of the attached GameObject;
+    /// </summary>
+    public Rigidbody2D Rigidbody2D;
+
+    /// <summary>
     /// Weapon component allowing the GameObject to fire projectiles.
     /// </summary>
     [Header("Combat")]
@@ -48,6 +53,31 @@ public class CommandRelay : MonoBehaviour
         if (weapon != null)
         {
             weapon.IsFiring = true;
+            weapon.FireRandom = false;
+            weapon.FireAtTarget = false;
+        }
+    }
+
+    /// <summary>
+    /// Signals that the weapon should begin firing at a target
+    /// </summary>
+    public void StartFireAtTarget()
+    {
+        weapon.IsFiring = true;
+        weapon.FireRandom = false;
+        weapon.FireAtTarget = true;
+    }
+
+    /// <summary>
+    /// Signals that the weapon should begin firing randomly.
+    /// </summary>
+    public void StartFireRandom()
+    {
+        if (weapon != null)
+        {
+            weapon.IsFiring = true;
+            weapon.FireRandom = true;
+            weapon.FireAtTarget = false;
         }
     }
 

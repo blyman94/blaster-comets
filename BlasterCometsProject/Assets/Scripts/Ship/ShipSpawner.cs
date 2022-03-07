@@ -43,7 +43,7 @@ public class ShipSpawner : MonoBehaviour
     /// <summary>
     /// Reference to the spawned ship's exploder module.
     /// </summary>
-    private ShipExploder shipExploder;
+    private Exploder shipExploder;
 
     /// <summary>
     /// Reference to the spawned ship.
@@ -69,7 +69,7 @@ public class ShipSpawner : MonoBehaviour
     }
     private void OnEnable()
     {
-        shipExploder.ShipExploded += StartRespawnTimer;
+        shipExploder.EntityExploded += StartRespawnTimer;
     }
     private void Update()
     {
@@ -97,7 +97,7 @@ public class ShipSpawner : MonoBehaviour
     }
     private void OnDisable()
     {
-        shipExploder.ShipExploded -= StartRespawnTimer;
+        shipExploder.EntityExploded -= StartRespawnTimer;
     }
     #endregion
 
@@ -122,9 +122,9 @@ public class ShipSpawner : MonoBehaviour
     /// </summary>
     private void ConfigureShipExploder()
     {
-        shipExploder = shipObject.GetComponent<ShipExploder>();
+        shipExploder = shipObject.GetComponent<Exploder>();
         shipExploder.ExplosionPool = explosionPool;
-        shipExploder.ShipController = shipController;
+        shipExploder.EntityController = shipController;
     }
 
     /// <summary>

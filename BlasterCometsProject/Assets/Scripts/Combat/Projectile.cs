@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,6 +11,14 @@ public class Projectile : MonoBehaviour, IPoolObject
     /// </summary>
     [Tooltip("Rigidbody2D component of the projectile.")]
     [SerializeField] private new Rigidbody2D rigidbody2D;
+
+    /// <summary>
+    /// Array of strings representing the tags of targets this projectile can
+    /// destroy.
+    /// </summary>
+    [Tooltip("Array of strings representing the tags of targets this " +
+        "projectile can destroy.")]
+    [SerializeField] private List<string> targetTags;
 
     /// <summary>
     /// Timer used to determine how long the projectile has been alive for.
@@ -35,7 +44,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         CombatTarget hitTarget = other.GetComponent<CombatTarget>();
-        if (hitTarget != null)
+        if (hitTarget != null && targetTags.Contains(hitTarget.tag))
         {
             hitTarget.TakeHit();
         }
