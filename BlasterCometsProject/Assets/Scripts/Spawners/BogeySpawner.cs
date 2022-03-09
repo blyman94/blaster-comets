@@ -92,7 +92,7 @@ public class BogeySpawner : MonoBehaviour
     public CommandRelay SpawnBogey()
     {
         bogeyObject.transform.position =
-                cameraBounds.GetRandomPositionOnBounds();
+                cameraBounds.GetRandomPositionOn();
         bogeyObject.SetActive(true);
         bogeyExploder.Unexplode();
         return bogeyRelay;

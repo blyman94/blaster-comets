@@ -700,7 +700,19 @@ MonoBehaviour:
     m_ActionId: 2023f796-03c3-4997-ba66-d929330cdf2b
     m_ActionName: Main/Fire[/Keyboard/space,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 562142639}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHyperspaceAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8464c73c-cfb8-477b-8647-e83cb27f7ac1
     m_ActionName: Main/Hyperspace[/Keyboard/downArrow,/Keyboard/r]
   - m_PersistentCalls:
@@ -1587,7 +1599,7 @@ MonoBehaviour:
   observedVariable: {fileID: 11400000, guid: e38dbee29423a3a49a38f65cad3db195, type: 2}
   text: {fileID: 1064444157}
   resetOnStart: 1
-  resetValue: 30000
+  resetValue: 0
 --- !u!1 &1674801518
 GameObject:
   m_ObjectHideFlags: 0

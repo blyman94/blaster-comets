@@ -36,7 +36,7 @@ public class CameraBounds : ScriptableObject
     /// </summary>
     /// <returns>Vector3 representing a random position on the camera's 
     /// bounds.</returns>
-    public Vector3 GetRandomPositionOnBounds()
+    public Vector3 GetRandomPositionOn()
     {
         bool spawnOnXBound = Random.Range(0.0f, 1.0f) >= 0.5f;
 
@@ -68,5 +68,16 @@ public class CameraBounds : ScriptableObject
                     MinYBound, 0);
             }
         }
+    }
+
+    /// <summary>
+    /// Returns a random position within the bounds of the camera's screen.
+    /// </summary>
+    /// <returns>Vector3 representing a random position within the camera's 
+    /// bounds.</returns>
+    public Vector3 GetRandomPositionWithin()
+    {
+        return new Vector3(Random.Range(MinXBound, MaxXBound), 
+            Random.Range(MinYBound, MaxYBound), 0);
     }
 }

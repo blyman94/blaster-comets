@@ -132,6 +132,18 @@ public class GameParameters : ScriptableObject
     public float ShipFireCooldown = 0.5f;
 
     /// <summary>
+    /// How long the ship must wait between hyperspace entries.
+    /// </summary>
+    [Tooltip("How long the ship must wait between hyperspace entries.")]
+    public float ShipHyperspaceCooldown = 1.0f;
+
+    /// <summary>
+    /// How long the ship remains in hyperspace.
+    /// </summary>
+    [Tooltip("How long the ship remains in hyperspace.")]
+    public float ShipHyperspaceInTime = 1.0f; 
+
+    /// <summary>
     /// Determines how long the ship's projectile stays active for after it 
     /// is fired.
     /// </summary>

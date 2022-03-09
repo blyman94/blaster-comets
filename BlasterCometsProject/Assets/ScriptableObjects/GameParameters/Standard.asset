@@ -29,6 +29,8 @@ MonoBehaviour:
   MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
   MeteoroidTravelSpeedMultiplier: 1.5
   ShipFireCooldown: 0.5
+  ShipHyperspaceCooldown: 1
+  ShipHyperspaceInTime: 1
   ShipProjectileLifeTime: 0.9
   ShipProjectileTravelSpeed: 10
   ShipMaxSpeed: 10

@@ -36,6 +36,22 @@ public class PlayerController : MonoBehaviour, IController
     }
 
     /// <summary>
+    /// Sends the controlled into hyperspace.
+    /// </summary>
+    /// <param name="context">Callback context of the controlling input 
+    /// action.</param>
+    public void OnHyperspaceAction(InputAction.CallbackContext context)
+    {
+        if (RelayToControl != null)
+        {
+            if (context.started)
+            {
+                RelayToControl.EnterHyperspace();
+            }
+        }
+    }
+
+    /// <summary>
     /// Rotates the controlled GameObject counter-clockwise.
     /// </summary>
     /// <param name="context">Callback context of the controlling input 

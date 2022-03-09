@@ -7,6 +7,12 @@ using UnityEngine;
 public class Thruster : MonoBehaviour
 {
     /// <summary>
+    /// The game's settings.
+    /// </summary>
+    [Tooltip("The game's settings.")]
+    [SerializeField] private Settings settings;
+
+    /// <summary>
     /// Rigidbody2D component of the GameObject to be moved.
     /// </summary>
     [Header("General")]
@@ -31,16 +37,6 @@ public class Thruster : MonoBehaviour
     /// Is the thruster currently active?
     /// </summary>
     public bool Active { get; set; } = false;
-
-    /// <summary>
-    /// Max speed at which the GameObject can travel.
-    /// </summary>
-    public float MaxSpeed { get; set; }
-
-    /// <summary>
-    /// Force applied per tick when thruster is active.
-    /// </summary>
-    public float ThrustForce { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
@@ -48,10 +44,12 @@ public class Thruster : MonoBehaviour
     {
         if (rigidbody2D != null)
         {
-            bool atMaxSpeed = rigidbody2D.velocity.magnitude >= MaxSpeed;
+            bool atMaxSpeed = 
+                rigidbody2D.velocity.magnitude >= settings.GameParameters.ShipMaxSpeed;
             if (Active && !atMaxSpeed)
             {
-                rigidbody2D.AddForce(rotationTransform.up * ThrustForce * 
+                rigidbody2D.AddForce(rotationTransform.up * 
+                    settings.GameParameters.ShipThrustForce * 
                     Time.fixedDeltaTime);
             }
         }

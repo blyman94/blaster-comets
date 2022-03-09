@@ -19,9 +19,17 @@ public class CommandRelay : MonoBehaviour
     [SerializeField] private Weapon weapon;
 
     /// <summary>
-    /// Rotator component allowing the GameObject to rotate.
+    /// Hyperspace component allowing the GameObject to teleport within the 
+    /// screen bounds.
     /// </summary>
     [Header("Movement")]
+    [Tooltip("Hyperspace component allowing the GameObject to teleport " +
+        "within the screen bounds.")]
+    [SerializeField] private Hyperspace hyperspace;
+
+    /// <summary>
+    /// Rotator component allowing the GameObject to rotate.
+    /// </summary>
     [Tooltip("Rotator component allowing the GameObject to rotate.")]
     [SerializeField] private Rotator rotator;
 
@@ -32,6 +40,21 @@ public class CommandRelay : MonoBehaviour
     [SerializeField] private Thruster thruster;
 
     #region Properties
+    /// <summary>
+    /// Hyperspace component allowing the GameObject to teleport within the 
+    /// screen bounds.
+    /// </summary>
+    public Hyperspace Hyperspace
+    {
+        get
+        {
+            return hyperspace;
+        }
+        set
+        {
+            hyperspace = value;
+        }
+    }
 
     /// <summary>
     /// Rotator component allowing the GameObject to rotate.
@@ -62,7 +85,7 @@ public class CommandRelay : MonoBehaviour
             thruster = value;
         }
     }
-    
+
     /// <summary>
     /// Weapon component allowing the GameObject to fire projectiles.
     /// </summary>
@@ -98,9 +121,12 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     public void StartFire()
     {
-        if (weapon != null)
+        if (!hyperspace.InHyperspace)
         {
-            weapon.IsFiring = true;
+            if (weapon != null)
+            {
+                weapon.IsFiring = true;
+            }
         }
     }
 
@@ -118,14 +144,26 @@ public class CommandRelay : MonoBehaviour
 
     #region Movement
     /// <summary>
+    /// Sends the controlled GameObject into Hyperspace.
+    /// </summary>
+    public void EnterHyperspace()
+    {
+        ResetRelay();
+        hyperspace.EnterHyperspace();
+    }
+
+    /// <summary>
     /// Starts rotating the GameObject counter-clockwise.
     /// </summary>
     public void StartRotationLeft()
     {
-        if (rotator != null)
+        if (!hyperspace.InHyperspace)
         {
-            rotator.RotateLeft = true;
-            rotator.RotateRight = false;
+            if (rotator != null)
+            {
+                rotator.RotateLeft = true;
+                rotator.RotateRight = false;
+            }
         }
     }
 
@@ -134,10 +172,13 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     public void StartRotationRight()
     {
-        if (rotator != null)
+        if (!hyperspace.InHyperspace)
         {
-            rotator.RotateLeft = false;
-            rotator.RotateRight = true;
+            if (rotator != null)
+            {
+                rotator.RotateLeft = false;
+                rotator.RotateRight = true;
+            }
         }
     }
 
@@ -146,13 +187,16 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     public void StartThruster()
     {
-        if (!thruster.gameObject.activeInHierarchy)
+        if (!hyperspace.InHyperspace)
         {
-            thruster.gameObject.SetActive(true);
-        }
-        if (thruster != null)
-        {
-            thruster.Active = true;
+            if (!thruster.gameObject.activeInHierarchy)
+            {
+                thruster.gameObject.SetActive(true);
+            }
+            if (thruster != null)
+            {
+                thruster.Active = true;
+            }
         }
     }
 

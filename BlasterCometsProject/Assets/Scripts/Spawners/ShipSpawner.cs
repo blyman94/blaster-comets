@@ -102,13 +102,6 @@ public class ShipSpawner : MonoBehaviour
 
         if (shipRelay != null)
         {
-            shipRelay.Rotator.RotationSpeed = 
-                settings.GameParameters.ShipRotationSpeed;
-
-            shipRelay.Thruster.MaxSpeed = settings.GameParameters.ShipMaxSpeed;
-            shipRelay.Thruster.ThrustForce = 
-                settings.GameParameters.ShipThrustForce;
-
             shipRelay.Weapon.Cooldown = 
                 settings.GameParameters.ShipFireCooldown;
             shipRelay.Weapon.ProjectilePool = projectilePool;

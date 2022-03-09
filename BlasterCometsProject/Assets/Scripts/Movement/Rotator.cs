@@ -7,6 +7,12 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     /// <summary>
+    /// The game's settings.
+    /// </summary>
+    [Tooltip("The game's settings.")]
+    [SerializeField] private Settings settings;
+
+    /// <summary>
     /// Rigidbody2D component of the GameObject to be rotated.
     /// </summary>
     [Header("General")]
@@ -23,11 +29,6 @@ public class Rotator : MonoBehaviour
     /// Should the GameObject be rotating clockwise?
     /// </summary>
     public bool RotateRight { get; set; } = false;
-
-    /// <summary>
-    /// Determines how quickly the GameObject rotates.
-    /// </summary>
-    public float RotationSpeed { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
@@ -37,12 +38,16 @@ public class Rotator : MonoBehaviour
         {
             if (RotateLeft)
             {
-                rigidbody2D.rotation += RotationSpeed * Time.fixedDeltaTime;
+                rigidbody2D.rotation += 
+                    settings.GameParameters.ShipRotationSpeed * 
+                    Time.fixedDeltaTime;
             }
             
             if (RotateRight)
             {
-                rigidbody2D.rotation -= RotationSpeed * Time.fixedDeltaTime;
+                rigidbody2D.rotation -= 
+                    settings.GameParameters.ShipRotationSpeed *
+                    Time.fixedDeltaTime;
             }
         }
     }
