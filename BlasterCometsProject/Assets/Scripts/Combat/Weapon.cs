@@ -39,6 +39,11 @@ public class Weapon : MonoBehaviour
     public float Cooldown { get; set; }
 
     /// <summary>
+    /// Angle of the firing cone, centered on the target.
+    /// </summary>
+    public float FireAngle { get; set; }
+
+    /// <summary>
     /// Should this weapon be firing?
     /// </summary>
     public bool IsFiring { get; set; } = false;
@@ -59,9 +64,9 @@ public class Weapon : MonoBehaviour
     public float ProjectileTravelSpeed { get; set; }
 
     /// <summary>
-    /// Angle of the firing cone, centered on the target.
+    /// Audio source for weapon fire audio.
     /// </summary>
-    public float FireAngle { get; set; }
+    public AudioSource AudioSource { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
@@ -95,6 +100,8 @@ public class Weapon : MonoBehaviour
 
             Projectile projectile = projectileObject.GetComponent<Projectile>();
             projectile.Fire(ProjectileTravelSpeed, ProjectileLifetime);
+
+            AudioSource.Play();
 
             cooldownTimer = Cooldown;
         }

@@ -30,6 +30,12 @@ public class BogeySpawner : MonoBehaviour
     [SerializeField] private GameObject bogeyPrefab;
 
     /// <summary>
+    /// Audio source used for explosions.
+    /// </summary>
+    [Tooltip("Audio source used for explosions.")]
+    [SerializeField] private AudioSource explosionAudioSource;
+
+    /// <summary>
     /// Pool from which destroyed ship's explosions will be spawned from.
     /// </summary>
     [Header("Object Pools")]
@@ -42,6 +48,12 @@ public class BogeySpawner : MonoBehaviour
     /// </summary>
     [Tooltip("Pool from which bogey projectiles will be spawned from.")]
     [SerializeField] private ObjectPool projectilePool;
+
+    /// <summary>
+    /// Audio source used for weapon fire sounds.
+    /// </summary>
+    [Tooltip("Audio source used for weapon fire sounds.")]
+    [SerializeField] private AudioSource weaponAudioSource;
 
     /// <summary>
     /// Exploder module for the bogey object.
@@ -66,6 +78,7 @@ public class BogeySpawner : MonoBehaviour
         bogeyObject.SetActive(false);
 
         bogeyExploder = bogeyObject.GetComponent<Exploder>();
+        bogeyExploder.ExplosionAudioSource = explosionAudioSource;
         bogeyExploder.ExplosionPool = explosionPool;
 
         ConfigureBogeyRelay();
@@ -115,6 +128,7 @@ public class BogeySpawner : MonoBehaviour
 
         if (bogeyRelay != null)
         {
+            bogeyRelay.Weapon.AudioSource = weaponAudioSource;
             bogeyRelay.Weapon.Cooldown =
                 settings.GameParameters.BogeyFireRate;
             bogeyRelay.Weapon.FireAngle =

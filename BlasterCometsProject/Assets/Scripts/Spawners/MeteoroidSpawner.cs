@@ -20,6 +20,12 @@ public class MeteoroidSpawner : MonoBehaviour
     [SerializeField] private CameraBounds cameraBounds;
 
     /// <summary>
+    /// Audio source used for explosions.
+    /// </summary>
+    [Tooltip("Audio source used for explosions.")]
+    [SerializeField] private AudioSource explosionAudioSource;
+
+    /// <summary>
     /// GameObject prefab representing the large meteoroid.
     /// </summary>
     [Header("Meteoroid Prefabs")]
@@ -95,6 +101,7 @@ public class MeteoroidSpawner : MonoBehaviour
             largeMeteoroidObject.transform.SetParent(null);
             Meteoroid largeMeteoroid =
                 largeMeteoroidObject.GetComponent<Meteoroid>();
+            largeMeteoroid.ExplosionAudioSource = explosionAudioSource;
             largeMeteoroid.ExplosionPool = explosionPool;
             largeMeteoroid.TravelSpeedRange = 
                 settings.GameParameters.MeteoroidTravelSpeedRange;
@@ -105,6 +112,7 @@ public class MeteoroidSpawner : MonoBehaviour
                 mediumMeteoroidObject.transform.SetParent(null);
                 Meteoroid mediumMeteoroid =
                     mediumMeteoroidObject.GetComponent<Meteoroid>();
+                mediumMeteoroid.ExplosionAudioSource = explosionAudioSource;
                 mediumMeteoroid.ExplosionPool = explosionPool;
                 mediumMeteoroid.TravelSpeedRange = 
                     settings.GameParameters.MeteoroidTravelSpeedRange * 
@@ -116,6 +124,7 @@ public class MeteoroidSpawner : MonoBehaviour
                     smallMeteoroidObject.transform.SetParent(null);
                     Meteoroid smallMeteoroid =
                         smallMeteoroidObject.GetComponent<Meteoroid>();
+                    smallMeteoroid.ExplosionAudioSource = explosionAudioSource;
                     smallMeteoroid.ExplosionPool = explosionPool;
                     smallMeteoroid.TravelSpeedRange =
                         settings.GameParameters.MeteoroidTravelSpeedRange *

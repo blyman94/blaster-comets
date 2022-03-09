@@ -13,6 +13,7 @@ public class Exploder : MonoBehaviour
     /// <summary>
     /// Collider of the exploding entity.
     /// </summary>
+    [Header("General")]
     [Tooltip("Collider of the exploding entity.")]
     [SerializeField] private Collider2D entityCollider;
 
@@ -34,6 +35,11 @@ public class Exploder : MonoBehaviour
     private Color originalColor;
 
     #region Properties
+    /// <summary>
+    /// Audio source used to play explosions when this object is destroyed.
+    /// </summary>
+    public AudioSource ExplosionAudioSource { get; set; }
+
     /// <summary>
     /// ObjectPool containing references to explode particle systems. Should be
     /// assigned by the object spawning this meteoroid.
@@ -86,6 +92,16 @@ public class Exploder : MonoBehaviour
         }
 
         EntityExploded?.Invoke();
+    }
+
+    /// <summary>
+    /// Plays explosion audio at the passed pitch.
+    /// </summary>
+    /// <param name="pitch">Pitch at which to play explosion.</param>
+    public void PlayExplosionAudio(float pitch)
+    {
+        ExplosionAudioSource.pitch = pitch;
+        ExplosionAudioSource.Play();
     }
 
     /// <summary>

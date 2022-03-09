@@ -13,9 +13,15 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private Settings settings;
 
     /// <summary>
-    /// IntVariable representing the number of lives the player has remaining.
+    /// Audio source used for explosions.
     /// </summary>
     [Header("General")]
+    [Tooltip("Audio source used for explosions.")]
+    [SerializeField] private AudioSource explosionAudioSource;
+
+    /// <summary>
+    /// IntVariable representing the number of lives the player has remaining.
+    /// </summary>
     [Tooltip("IntVariable representing the number of lives the player has " +
         "remaining.")]
     [SerializeField] private IntVariable playerLives;
@@ -32,6 +38,12 @@ public class ShipSpawner : MonoBehaviour
     /// </summary>
     [Tooltip("Prefab representing the ship (player).")]
     [SerializeField] private GameObject shipPrefab;
+
+    /// <summary>
+    /// Audio source used for weapon fire sounds.
+    /// </summary>
+    [Tooltip("Audio source used for weapon fire sounds.")]
+    [SerializeField] private AudioSource weaponAudioSource;
 
     /// <summary>
     /// Pool from which destroyed ship's explosions will be spawned from.
@@ -109,6 +121,7 @@ public class ShipSpawner : MonoBehaviour
             shipRelay.Thruster.ThrustForce = 
                 settings.GameParameters.ShipThrustForce;
 
+            shipRelay.Weapon.AudioSource = weaponAudioSource;
             shipRelay.Weapon.Cooldown = 
                 settings.GameParameters.ShipFireCooldown;
             shipRelay.Weapon.ProjectilePool = projectilePool;
@@ -125,6 +138,7 @@ public class ShipSpawner : MonoBehaviour
     private void ConfigureShipExploder()
     {
         shipExploder = shipObject.GetComponent<Exploder>();
+        shipExploder.ExplosionAudioSource = explosionAudioSource;
         shipExploder.ExplosionPool = explosionPool;
         shipExploder.EntityController = shipController;
     }

@@ -29,6 +29,11 @@ public class Meteoroid : MonoBehaviour, IPoolObject
 
     #region Properties
     /// <summary>
+    /// Audio source used to play explosions when this object is destroyed.
+    /// </summary>
+    public AudioSource ExplosionAudioSource { get; set; }
+
+    /// <summary>
     /// Array of meteoroid objects to be activated when this meteoroid is 
     /// destroyed.
     /// </summary>
@@ -81,6 +86,16 @@ public class Meteoroid : MonoBehaviour, IPoolObject
         SpawnExplosionParticleSystem();
         SpawnChildMeteoroids();
         OriginPool.Release(gameObject);
+    }
+
+    /// <summary>
+    /// Plays explosion audio at the passed pitch.
+    /// </summary>
+    /// <param name="pitch">Pitch at which to play explosion.</param>
+    public void PlayExplosionAudio(float pitch)
+    {
+        ExplosionAudioSource.pitch = pitch;
+        ExplosionAudioSource.Play();
     }
 
     /// <summary>
