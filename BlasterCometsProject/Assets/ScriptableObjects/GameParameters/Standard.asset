@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc9f8b6686ffc2469e168ecd185444e, type: 3}
+  m_Name: Standard
+  m_EditorClassIdentifier: 
+  BogeyFireAngle: 90
+  BogeyFireRate: 1
+  BogeyProjectileLifeTime: 1.125
+  BogeyProjectileTravelSpeed: 8
+  BogeyMoveSpeed: 1
+  BogeyMoveTimeRange: {x: 3, y: 5}
+  BogeyLargeSpawnThreshold: 2000
+  BogeyLifetime: 10
+  BogeySmallSpawnThreshold: 10000
+  BogeyOnlySmallSpawnThreshold: 40000
+  BogeySpawnDelayRange: {x: 5, y: 10}
+  MeteoroidLargeCount: 4
+  MeteoroidMediumCount: 2
+  MeteoroidSmallCount: 2
+  MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
+  MeteoroidTravelSpeedMultiplier: 1.5
+  ShipFireCooldown: 0.5
+  ShipProjectileLifeTime: 0.9
+  ShipProjectileTravelSpeed: 10
+  ShipMaxSpeed: 10
+  ShipRotationSpeed: 150
+  ShipThrustForce: 650
+  ShipRespawnTime: 3
+  ShipStartingLives: 3

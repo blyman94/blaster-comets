@@ -13,11 +13,18 @@ using UnityEngine;
 public class WrapTransformToScreen : MonoBehaviour
 {
     /// <summary>
+    /// Bounds of the main camera.
+    /// </summary>
+    [Header("General")]
+    [Tooltip("Bounds of the main camera.")]
+    [SerializeField] private CameraBounds cameraBounds;
+
+    /// <summary>
     /// Collection of renders that determine if the GameObject is currently 
     /// visible to the camera. Should include all 2D sprite renders that make 
     /// up the GameObject.
     /// </summary>
-    [Header("General")]
+   
     [Tooltip("Collection of renders that determine if the GameObject is " +
         "currently visible to the camera. Should include all sprite " +
         "renderers that make up the GameObject.")]
@@ -35,41 +42,12 @@ public class WrapTransformToScreen : MonoBehaviour
     /// </summary>
     private bool isWrappingY = false;
 
-    /// <summary>
-    /// Camera determining the bounds for screen wrapping.
-    /// </summary>
-    private Camera mainCamera;
-
-    /// <summary>
-    /// Represents the rightmost camera bound.
-    /// </summary>
-    private float maxXBound;
-
-    /// <summary>
-    /// Represents the topmost camera bound.
-    /// </summary>
-    private float maxYBound;
-
-    /// <summary>
-    /// Represents the leftmost camera bound.
-    /// </summary>
-    private float minXBound;
-
-    /// <summary>
-    /// Represents the bottommost camera bound.
-    /// </summary>
-    private float minYBound;
-
     #region MonoBehaviour Methods
-    private void Start()
-    {
-        mainCamera = Camera.main;
-        CalculateCameraBounds();
-    }
     private void Update()
     {
         ScreenWrap();
     }
+    #endregion
 
     /// <summary>
     /// If the GameObject's transform leaves the screen bounds, it will be 
@@ -93,36 +71,21 @@ public class WrapTransformToScreen : MonoBehaviour
         }
 
         Vector3 newPosition = transform.position;
-        if (!isWrappingX && (newPosition.x >= maxXBound ||
-            newPosition.x <= minXBound))
+        if (!isWrappingX && (newPosition.x >= cameraBounds.MaxXBound ||
+            newPosition.x <= cameraBounds.MinXBound))
         {
             newPosition.x = -newPosition.x;
             isWrappingX = true;
         }
 
-        if (!isWrappingY && (newPosition.y >= maxYBound ||
-            newPosition.y <= minYBound))
+        if (!isWrappingY && (newPosition.y >= cameraBounds.MaxYBound ||
+            newPosition.y <= cameraBounds.MinYBound))
         {
             newPosition.y = -newPosition.y;
             isWrappingY = true;
         }
 
         transform.position = newPosition;
-    }
-    #endregion
-
-    /// <summary>
-    /// Calculates camera bounds for screen wrapping functionality.
-    /// </summary>
-    private void CalculateCameraBounds()
-    {
-        mainCamera.GetBounds(out float maxXBound, out float maxYBound,
-            out float minXBound, out float minYBound);
-            
-        this.maxXBound = maxXBound;
-        this.maxYBound = maxYBound;
-        this.minXBound = minXBound;
-        this.minYBound = minYBound;
     }
 
     /// <summary>

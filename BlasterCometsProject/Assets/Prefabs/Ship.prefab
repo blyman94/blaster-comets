@@ -76,14 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaab2fbe7a3f1743b7111e999896acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStart: {fileID: 3374253258290881779}
-  cooldown: 0.25
-  lifeTime: 0.9
-  radius: 1
-  travelSpeed: 10
-  initialSize: 10
-  projectilePoolParent: {fileID: 3374253257332818934}
-  projectilePrefab: {fileID: 1830846599129343689, guid: eb53f00f61b3ae347a648c4c4670d185, type: 3}
+  ProjectileStart: {fileID: 3374253258290881779}
+  aimStrategy: {fileID: 11400000, guid: b148adc813f9be844b93fe8bbe28b761, type: 2}
+  Radius: 1
 --- !u!1 &3374253257332818935
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1167437868da72648895f5e5fa9c190f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rigidbody2D: {fileID: 0}
+  Rigidbody2D: {fileID: 3374253257614744455}
   weapon: {fileID: 3374253257177161970}
   rotator: {fileID: 3374253258183998243}
   thruster: {fileID: 3374253258014076630}
@@ -275,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed5ac35cd6534c46811ce43ce19b95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraBounds: {fileID: 11400000, guid: 7740e7b14ffa9c44cbae3d6f85e9a5e9, type: 2}
   visibilityRenderers:
   - {fileID: 3374253258185521869}
 --- !u!1 &3374253257973502389
@@ -5128,8 +5124,6 @@ MonoBehaviour:
   rigidbody2D: {fileID: 3374253257614744455}
   rotationTransform: {fileID: 3374253257614744453}
   thrusterParticleSystem: {fileID: 3374253257973502394}
-  maxSpeed: 10
-  thrustForce: 500
 --- !u!1 &3374253258183998269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,7 +5168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 3374253257614744455}
-  rotationSpeed: 100
 --- !u!1 &3374253258185521871
 GameObject:
   m_ObjectHideFlags: 0

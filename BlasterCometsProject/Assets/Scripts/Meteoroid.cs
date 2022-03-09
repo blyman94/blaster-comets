@@ -15,19 +15,6 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     [SerializeField] private new Rigidbody2D rigidbody2D;
 
     /// <summary>
-    /// Maximum speed at which this meteoroid can travel.
-    /// </summary>
-    [Header("Speed Parameters")]
-    [Tooltip("Maximum speed at which this meteoroid can travel.")]
-    [SerializeField] private float maxTravelSpeed = 3;
-
-    /// <summary>
-    /// Minimum speed at which this meteoroid can travel.
-    /// </summary>
-    [Tooltip("Minimum speed at which this meteoroid can travel.")]
-    [SerializeField] private float minTravelSpeed = 1;
-
-    /// <summary>
     /// SpriteRenderer used to represent the meteoroid.
     /// </summary>
     [Header("Graphics")]
@@ -52,6 +39,11 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     /// assigned by the object spawning this meteoroid.
     /// </summary>
     public ObjectPool ExplosionPool { get; set; }
+
+    /// <summary>
+    /// What range of speeds can a meteoroid travel?
+    /// </summary>
+    public Vector2 TravelSpeedRange { get; set; }
     #endregion
 
     #region IPoolObject Methods
@@ -113,8 +105,8 @@ public class Meteoroid : MonoBehaviour, IPoolObject
         float yDir = Random.Range(-1f, 1f);
         Vector3 direction = new Vector3(xDir, yDir, 0);
 
-        rigidbody2D.velocity =
-            direction.normalized * Random.Range(minTravelSpeed, maxTravelSpeed);
+        rigidbody2D.velocity = direction.normalized *
+            Random.Range(TravelSpeedRange.x, TravelSpeedRange.y);
     }
 
     /// <summary>

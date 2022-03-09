@@ -11,39 +11,16 @@ public class BogeyController : MonoBehaviour, IController
     public SimpleDelegate Retreated;
 
     /// <summary>
-    /// Main Camera used to determine random spawn positions.
+    /// The game's settings.
     /// </summary>
-    [Header("General")]
-    [Tooltip("Main Camera used to determine random spawn positions.")]
-    [SerializeField] private Camera mainCamera;
-
-    /// <summary>
-    /// How long does the bogey last before retreating?
-    /// </summary>
-    [Header("Bogey Parameters")]
-    [Tooltip("How long does the bogey last before retreating?")]
-    public float Lifetime;
-
-    /// <summary>
-    /// What is the shortest amount of time a bogey will move in a single 
-    /// direction?
-    /// </summary>
-    [Tooltip("What is the shortest amount of time a bogey will move in " +
-        "a single direction?")]
-    [SerializeField] private float minMoveTime;
-
-    /// <summary>
-    /// What is the longest amount of time a bogey will move in a single 
-    /// direction?
-    /// </summary>
-    [Tooltip("What is the longest amount of time a bogey will move in " +
-        "a single direction?")]
-    [SerializeField] private float maxMoveTime;
+    [Tooltip("The game's settings.")]
+    [SerializeField] private Settings settings;
 
     /// <summary>
     /// Bounds of the main camera.
     /// </summary>
-    private CameraBounds cameraBounds;
+    [Tooltip("Bounds of the main camera.")]
+    [SerializeField] private CameraBounds cameraBounds;
 
     /// <summary>
     /// Transform of the bogey being controlled.
@@ -66,18 +43,7 @@ public class BogeyController : MonoBehaviour, IController
     /// </summary>
     private float moveTimer = 0;
 
-    /// <summary>
-    /// Is the bogey currently retreating?
-    /// </summary>
-    private bool isRetreating;
-
     #region Properties
-    /// <summary>
-    /// Is the bogey being controlled a large bogey? If false, the bogey being
-    /// controlled will be considered a small bogey.
-    /// </summary>
-    public bool IsLargeBogey { get; set; }
-
     /// <summary>
     /// How fast will the bogey move?
     /// </summary>
@@ -105,13 +71,6 @@ public class BogeyController : MonoBehaviour, IController
     #endregion
 
     #region MonoBehaviour Methods
-    private void Start()
-    {
-        if (mainCamera != null)
-        {
-            cameraBounds = mainCamera.GetBounds();
-        }
-    }
     private void Update()
     {
         if (RelayToControl != null)
@@ -146,7 +105,8 @@ public class BogeyController : MonoBehaviour, IController
         }
         else
         {
-            Retreat();
+            lifeTimer = -1;
+            MoveInRandomDirection();
         }
     }
 
@@ -155,16 +115,12 @@ public class BogeyController : MonoBehaviour, IController
     /// </summary>
     private void CheckRetreatStatus()
     {
-        if (isRetreating)
-        {
-            if (bogeyTransform.position.x >= cameraBounds.MaxXBound ||
+        if (bogeyTransform.position.x >= cameraBounds.MaxXBound ||
                 bogeyTransform.position.x <= cameraBounds.MinXBound ||
                 bogeyTransform.position.y >= cameraBounds.MaxYBound ||
                 bogeyTransform.position.y <= cameraBounds.MinYBound)
-            {
-                isRetreating = false;
-                Retreated?.Invoke();
-            }
+        {
+            Retreated?.Invoke();
         }
     }
 
@@ -180,17 +136,8 @@ public class BogeyController : MonoBehaviour, IController
 
         relayToControl.Rigidbody2D.velocity = direction.normalized *
             MoveSpeed;
-        moveTimer = Random.Range(minMoveTime, maxMoveTime);
-    }
-
-    /// <summary>
-    /// Moves the bogey to a random screen boundary and deactivates it.
-    /// </summary>
-    private void Retreat()
-    {
-        isRetreating = true;
-        lifeTimer = -1;
-        MoveInRandomDirection();
+        moveTimer = Random.Range(settings.GameParameters.BogeyMoveTimeRange.x,
+            settings.GameParameters.BogeyMoveTimeRange.y);
     }
 
     /// <summary>
@@ -198,16 +145,8 @@ public class BogeyController : MonoBehaviour, IController
     /// </summary>
     private void StartBogeyControl()
     {
-        if (IsLargeBogey)
-        {
-            relayToControl.StartFireRandom();
-        }
-        else
-        {
-            relayToControl.StartFireAtTarget();
-        }
-
-        lifeTimer = Lifetime;
+        relayToControl.StartFire();
+        lifeTimer = settings.GameParameters.BogeyLifetime;
         MoveInRandomDirection();
     }
 }

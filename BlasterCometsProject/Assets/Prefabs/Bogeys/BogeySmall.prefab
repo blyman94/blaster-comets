@@ -16,9 +16,17 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2743493795898691867, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
+      propertyPath: Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743493795898691867, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
       propertyPath: startAngle
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 2743493795898691867, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
+      propertyPath: aimStrategy
+      value: 
+      objectReference: {fileID: 11400000, guid: 05fd7afcf0d5d9c44ae40d3ade5bb394, type: 2}
     - target: {fileID: 2743493795898691867, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
       propertyPath: playerScore
       value: 

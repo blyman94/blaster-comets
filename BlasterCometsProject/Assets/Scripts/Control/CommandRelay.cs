@@ -31,6 +31,54 @@ public class CommandRelay : MonoBehaviour
     [Tooltip("Thuster component allowing the GameObject to move forward.")]
     [SerializeField] private Thruster thruster;
 
+    #region Properties
+
+    /// <summary>
+    /// Rotator component allowing the GameObject to rotate.
+    /// </summary>
+    public Rotator Rotator
+    {
+        get
+        {
+            return rotator;
+        }
+        set
+        {
+            rotator = value;
+        }
+    }
+
+    /// <summary>
+    /// Thuster component allowing the GameObject to move forward.
+    /// </summary>
+    public Thruster Thruster
+    {
+        get
+        {
+            return thruster;
+        }
+        set
+        {
+            thruster = value;
+        }
+    }
+    
+    /// <summary>
+    /// Weapon component allowing the GameObject to fire projectiles.
+    /// </summary>
+    public Weapon Weapon
+    {
+        get
+        {
+            return weapon;
+        }
+        set
+        {
+            weapon = value;
+        }
+    }
+    #endregion
+
     #region General
     /// <summary>
     /// Resets the CommandRelay to its initial state.
@@ -53,31 +101,6 @@ public class CommandRelay : MonoBehaviour
         if (weapon != null)
         {
             weapon.IsFiring = true;
-            weapon.FireRandom = false;
-            weapon.FireAtTarget = false;
-        }
-    }
-
-    /// <summary>
-    /// Signals that the weapon should begin firing at a target
-    /// </summary>
-    public void StartFireAtTarget()
-    {
-        weapon.IsFiring = true;
-        weapon.FireRandom = false;
-        weapon.FireAtTarget = true;
-    }
-
-    /// <summary>
-    /// Signals that the weapon should begin firing randomly.
-    /// </summary>
-    public void StartFireRandom()
-    {
-        if (weapon != null)
-        {
-            weapon.IsFiring = true;
-            weapon.FireRandom = true;
-            weapon.FireAtTarget = false;
         }
     }
 

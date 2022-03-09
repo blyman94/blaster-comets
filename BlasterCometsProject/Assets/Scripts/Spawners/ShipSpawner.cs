@@ -7,16 +7,15 @@ using UnityEngine;
 public class ShipSpawner : MonoBehaviour
 {
     /// <summary>
-    /// Pool from which destroyed ship's explosions will be spawned from.
+    /// The game's settings.
     /// </summary>
-    [Header("General")]
-    [Tooltip("Pool from which destroyed ship's explosions will be " +
-        "spawned from.")]
-    [SerializeField] private ExplosionPool explosionPool;
+    [Tooltip("The game's settings.")]
+    [SerializeField] private Settings settings;
 
     /// <summary>
     /// IntVariable representing the number of lives the player has remaining.
     /// </summary>
+    [Header("General")]
     [Tooltip("IntVariable representing the number of lives the player has " +
         "remaining.")]
     [SerializeField] private IntVariable playerLives;
@@ -35,10 +34,18 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private GameObject shipPrefab;
 
     /// <summary>
-    /// Amount of time it takes for a ship to respawn after exploding.
+    /// Pool from which destroyed ship's explosions will be spawned from.
     /// </summary>
-    [Tooltip("Amount of time it takes for a ship to respawn after exploding.")]
-    [SerializeField] private float shipRespawnTime = 3;
+    [Header("Object Pools")]
+    [Tooltip("Pool from which destroyed ship's explosions will be " +
+        "spawned from.")]
+    [SerializeField] private ObjectPool explosionPool;
+
+    /// <summary>
+    /// Pool from which bogey projectiles will be spawned from.
+    /// </summary>
+    [Tooltip("Pool from which bogey projectiles will be spawned from.")]
+    [SerializeField] private ObjectPool projectilePool;
 
     /// <summary>
     /// Reference to the spawned ship's exploder module.
@@ -64,14 +71,69 @@ public class ShipSpawner : MonoBehaviour
     private void Awake()
     {
         shipObject = Instantiate(shipPrefab, Vector3.zero, Quaternion.identity);
-        AssignShipRelayToController();
+        ConfigureShip();
         ConfigureShipExploder();
+        SpawnNewShip();
     }
     private void OnEnable()
     {
         shipExploder.EntityExploded += StartRespawnTimer;
     }
     private void Update()
+    {
+        HandleShipRespawn();
+    }
+
+    private void OnDisable()
+    {
+        shipExploder.EntityExploded -= StartRespawnTimer;
+    }
+    #endregion
+
+    /// <summary>
+    /// Assigns the ship's CommandRelay to the ship controller.
+    /// </summary>
+    private void ConfigureShip()
+    {
+        if (shipRelay == null)
+        {
+            shipRelay = shipObject.GetComponent<CommandRelay>();
+        }
+
+        if (shipRelay != null)
+        {
+            shipRelay.Rotator.RotationSpeed = 
+                settings.GameParameters.ShipRotationSpeed;
+
+            shipRelay.Thruster.MaxSpeed = settings.GameParameters.ShipMaxSpeed;
+            shipRelay.Thruster.ThrustForce = 
+                settings.GameParameters.ShipThrustForce;
+
+            shipRelay.Weapon.Cooldown = 
+                settings.GameParameters.ShipFireCooldown;
+            shipRelay.Weapon.ProjectilePool = projectilePool;
+            shipRelay.Weapon.ProjectileLifetime = 
+                settings.GameParameters.ShipProjectileLifeTime;
+            shipRelay.Weapon.ProjectileTravelSpeed =
+                settings.GameParameters.ShipProjectileTravelSpeed;
+        }
+    }
+
+    /// <summary>
+    /// Configures the exploder module of the spawned ship.
+    /// </summary>
+    private void ConfigureShipExploder()
+    {
+        shipExploder = shipObject.GetComponent<Exploder>();
+        shipExploder.ExplosionPool = explosionPool;
+        shipExploder.EntityController = shipController;
+    }
+
+    /// <summary>
+    /// Spawns a new ship if the respawn timer is active and reaches 0. Triggers
+    /// end game sequence if there are no player lives remaining.
+    /// </summary>
+    private void HandleShipRespawn()
     {
         if (respawnTimer == -1)
         {
@@ -95,37 +157,6 @@ public class ShipSpawner : MonoBehaviour
             respawnTimer = -1;
         }
     }
-    private void OnDisable()
-    {
-        shipExploder.EntityExploded -= StartRespawnTimer;
-    }
-    #endregion
-
-    /// <summary>
-    /// Assigns the ship's CommandRelay to the ship controller.
-    /// </summary>
-    private void AssignShipRelayToController()
-    {
-        if (shipRelay == null)
-        {
-            shipRelay = shipObject.GetComponent<CommandRelay>();
-        }
-
-        if (shipRelay != null)
-        {
-            shipController.RelayToControl = shipRelay;
-        }
-    }
-
-    /// <summary>
-    /// Configures the exploder module of the spawned ship.
-    /// </summary>
-    private void ConfigureShipExploder()
-    {
-        shipExploder = shipObject.GetComponent<Exploder>();
-        shipExploder.ExplosionPool = explosionPool;
-        shipExploder.EntityController = shipController;
-    }
 
     /// <summary>
     /// Spawns a new ship by resetting the state of the existing ship.
@@ -135,7 +166,7 @@ public class ShipSpawner : MonoBehaviour
         shipObject.transform.position = Vector3.zero;
         shipObject.transform.rotation = Quaternion.identity;
         shipExploder.Unexplode();
-        AssignShipRelayToController();
+        shipController.RelayToControl = shipRelay;
     }
 
     /// <summary>
@@ -147,6 +178,6 @@ public class ShipSpawner : MonoBehaviour
         {
             playerLives.Value -= 1;
         }
-        respawnTimer = shipRespawnTime;
+        respawnTimer = settings.GameParameters.ShipRespawnTime;
     }
 }

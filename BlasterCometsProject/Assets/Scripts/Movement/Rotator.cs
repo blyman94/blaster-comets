@@ -13,13 +13,6 @@ public class Rotator : MonoBehaviour
     [Tooltip("Rigidbody2D component of the GameObject to be rotated.")]
     [SerializeField] private new Rigidbody2D rigidbody2D;
 
-    /// <summary>
-    /// Determines how quickly the GameObject rotates.
-    /// </summary>
-    [Header("Rotation Parameters")]
-    [Tooltip("Determines how quickly the GameObject rotates.")]
-    [SerializeField] private float rotationSpeed = 100;
-
     #region Properties
     /// <summary>
     /// Should the GameObject be rotating counter-clockwise?
@@ -30,6 +23,11 @@ public class Rotator : MonoBehaviour
     /// Should the GameObject be rotating clockwise?
     /// </summary>
     public bool RotateRight { get; set; } = false;
+
+    /// <summary>
+    /// Determines how quickly the GameObject rotates.
+    /// </summary>
+    public float RotationSpeed { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
@@ -39,12 +37,12 @@ public class Rotator : MonoBehaviour
         {
             if (RotateLeft)
             {
-                rigidbody2D.rotation += rotationSpeed * Time.fixedDeltaTime;
+                rigidbody2D.rotation += RotationSpeed * Time.fixedDeltaTime;
             }
             
             if (RotateRight)
             {
-                rigidbody2D.rotation -= rotationSpeed * Time.fixedDeltaTime;
+                rigidbody2D.rotation -= RotationSpeed * Time.fixedDeltaTime;
             }
         }
     }

@@ -4,83 +4,53 @@ using UnityEngine;
 /// <summary>
 /// Instantiates and holds reference to game objects for recyclying purposes.
 /// </summary>
-public class ObjectPool
+public class ObjectPool : MonoBehaviour
 {
     /// <summary>
     /// Determines whether this ObjectPool can grow if a pool object is
     /// requested and none are available.
     /// </summary>
-    private bool canGrow;
+    [Tooltip("Determines whether this ObjectPool can grow if a pool object " +
+        "requested and none are available.")]
+    [SerializeField] private bool canGrow;
 
     /// <summary>
     /// Initial number of instances of the pool object this pool will contain.
     /// </summary>
-    private int initialSize;
+    [Tooltip("Initial number of instances of the pool object this pool " +
+        "will contain.")]
+    [SerializeField] private int initialSize;
 
     /// <summary>
     /// Prefab object to pool.
     /// </summary>
-    private GameObject objectToPool;
+    [Tooltip("Prefab object to pool.")]
+    [SerializeField] private GameObject objectToPool;
+
+    /// <summary>
+    /// Transform underwhich to store instantiated pool objects.
+    /// </summary>
+    [Tooltip("Transform underwhich to store instantiated pool objects.")]
+    [SerializeField] private Transform poolParent;
 
     /// <summary>
     /// Stack representing the objects in the pool.
     /// </summary>
     private Stack<GameObject> pool;
 
-    /// <summary>
-    /// Transform underwhich to store instantiated pool objects.
-    /// </summary>
-    private Transform poolParent;
-
-    /// <summary>
-    /// Initializes an instance of the ObjectPool class with the given 
-    /// parameters.
-    /// </summary>
-    /// <param name="objectToPool">Prefab object to pool..</param>
-    /// <param name="initialSize">Initial number of instances of the pool object
-    /// this pool will contain.</param>
-    /// <param name="canGrow">Determines whether this ObjectPool can grow if a 
-    /// pool object is requested and none are available.</param>
-    public ObjectPool(GameObject objectToPool, int initialSize, bool canGrow)
+    #region MonoBehaviour Methods
+    public void Awake()
     {
-        this.canGrow = canGrow;
-        this.initialSize = initialSize;
-        this.objectToPool = objectToPool;
-        pool = new Stack<GameObject>();
-
         InitializePool();
     }
-
-    /// <summary>
-    /// Initializes an instance of the ObjectPool class with the given 
-    /// parameters. Assigns the parent of instantiated objects to a pool parent,
-    /// so as to keep the Hierarchy view in the Unity Editor clean.
-    /// </summary>
-    /// <param name="objectToPool">Prefab object to pool..</param>
-    /// <param name="initialSize">Initial number of instances of the pool object
-    /// this pool will contain.</param>
-    /// <param name="canGrow">Determines whether this ObjectPool can grow if a 
-    /// pool object is requested and none are available.</param>
-    /// <param name="poolParent">Transform to which instantiated objects will be
-    /// parented.</param>
-    public ObjectPool(GameObject objectToPool, int initialSize, bool canGrow,
-        Transform poolParent)
-    {
-        this.canGrow = canGrow;
-        this.initialSize = initialSize;
-        this.objectToPool = objectToPool;
-        pool = new Stack<GameObject>();
-        this.poolParent = poolParent;
-
-        InitializePool();
-    }
+    #endregion
 
     /// <summary>
     /// Returns a free object from the pool. If there are no free objects, 
     /// returns null. If there are no free objects and the pool can grow, 
-    /// instantiates a new object and returns the free object from the pool.
+    /// instantiates a new object and returns a free object from the pool.
     /// </summary>
-    /// <returns>Returns a free object from the pool.</returns>
+    /// <returns>GameObject representing a free object in the pool.</returns>
     public GameObject Get()
     {
         if (pool.Count > 0)
@@ -135,6 +105,8 @@ public class ObjectPool
     /// </summary>
     private void InitializePool()
     {
+        pool = new Stack<GameObject>();
+
         for (int i = 0; i < initialSize; i++)
         {
             GameObject poolGameObject;

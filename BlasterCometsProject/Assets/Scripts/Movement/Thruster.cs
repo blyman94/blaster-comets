@@ -26,24 +26,21 @@ public class Thruster : MonoBehaviour
     [Tooltip("Particle system representing the thruster visually.")]
     [SerializeField] private ParticleSystem thrusterParticleSystem;
 
-    /// <summary>
-    /// Max speed at which the GameObject can travel.
-    /// </summary>
-    [Header("Thrust Parameters")]
-    [Tooltip("Max speed at which the GameObject can travel.")]
-    [SerializeField] private float maxSpeed = 10;
-
-    /// <summary>
-    /// Force applied per tick when thruster is active.
-    /// </summary>
-    [Tooltip("Force applied per tick when thruster is active.")]
-    [SerializeField] private float thrustForce = 500;
-
     #region Properties
     /// <summary>
     /// Is the thruster currently active?
     /// </summary>
     public bool Active { get; set; } = false;
+
+    /// <summary>
+    /// Max speed at which the GameObject can travel.
+    /// </summary>
+    public float MaxSpeed { get; set; }
+
+    /// <summary>
+    /// Force applied per tick when thruster is active.
+    /// </summary>
+    public float ThrustForce { get; set; }
     #endregion
 
     #region MonoBehaviour Methods
@@ -51,10 +48,10 @@ public class Thruster : MonoBehaviour
     {
         if (rigidbody2D != null)
         {
-            bool atMaxSpeed = rigidbody2D.velocity.magnitude >= maxSpeed;
+            bool atMaxSpeed = rigidbody2D.velocity.magnitude >= MaxSpeed;
             if (Active && !atMaxSpeed)
             {
-                rigidbody2D.AddForce(rotationTransform.up * thrustForce * 
+                rigidbody2D.AddForce(rotationTransform.up * ThrustForce * 
                     Time.fixedDeltaTime);
             }
         }

@@ -38,7 +38,7 @@ public class Exploder : MonoBehaviour
     /// ObjectPool containing references to explode particle systems. Should be
     /// assigned by the object spawning this meteoroid.
     /// </summary>    
-    public ExplosionPool ExplosionPool { get; set; }
+    public ObjectPool ExplosionPool { get; set; }
 
     /// <summary>
     /// Controller controlling the ship.
@@ -80,7 +80,7 @@ public class Exploder : MonoBehaviour
 
         if (ExplosionPool != null)
         {
-            GameObject explosionObject = ExplosionPool.Pool.Get();
+            GameObject explosionObject = ExplosionPool.Get();
             explosionObject.transform.position = transform.position;
             explosionObject.SetActive(true);
         }
