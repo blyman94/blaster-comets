@@ -840,7 +840,7 @@ MonoBehaviour:
     m_ActionId: 5d36c09a-9a98-4164-b19c-45c4f37763b8
     m_ActionName: Main/Thruster[/Keyboard/upArrow,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Main
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
