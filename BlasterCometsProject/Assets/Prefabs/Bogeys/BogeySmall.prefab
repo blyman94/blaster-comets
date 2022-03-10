@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BogeySmall
       objectReference: {fileID: 0}
+    - target: {fileID: 2743493796051760526, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
+      propertyPath: failsafeThreshold
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2743493796051760527, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
       propertyPath: m_RootOrder
       value: 0

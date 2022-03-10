@@ -17,6 +17,7 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     /// <summary>
     /// Bounds of the main camera.
     /// </summary>
+    [Header("General")]
     [Tooltip("Bounds of the main camera.")]
     [SerializeField] private CameraBounds cameraBounds;
 
@@ -26,7 +27,7 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     /// </summary>
     [Tooltip("How far from the center of the screen can this meteoroid " +
         "before it's teleported back to the camera boundary?")]
-    [SerializeField] private float failsafeThreshold;
+    [SerializeField] private float failsafeThreshold = 20;
 
     /// <summary>
     /// SpriteRenderer used to represent the meteoroid.
@@ -93,17 +94,17 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     {
         ChildMeteoroidObjects = new List<GameObject>();
     }
+    private void OnEnable()
+    {
+        ChooseRandomSprite();
+        ChooseRandomVelocity();
+    }
     private void Update()
     {
         if (transform.position.magnitude >= failsafeThreshold)
         {
             transform.position = cameraBounds.GetRandomPositionOn();
         }
-    }
-    private void OnEnable()
-    {
-        ChooseRandomSprite();
-        ChooseRandomVelocity();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -113,6 +114,13 @@ public class Meteoroid : MonoBehaviour, IPoolObject
             if (target != null)
             {
                 target.TakeHit();
+                if (other.CompareTag("Player"))
+                {
+                    CombatTarget meteoroidTarget = GetComponent<CombatTarget>();
+                    meteoroidTarget.AwardPoints();
+                }
+
+                Destroy();
             }
         }
     }

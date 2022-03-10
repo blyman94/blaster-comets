@@ -112,6 +112,7 @@ public class CommandRelay : MonoBehaviour
         StopRotationLeft();
         StopRotationRight();
         StopThrusterImmediate();
+        Rigidbody2D.velocity = Vector2.zero;
     }
     #endregion
 

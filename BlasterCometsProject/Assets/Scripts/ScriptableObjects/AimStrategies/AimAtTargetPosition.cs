@@ -7,6 +7,13 @@ using UnityEngine;
 public class AimAtTargetPosition : AimStrategy
 {
     /// <summary>
+    /// When targeting the ship, the angle of the cone the bogey fires in.
+    /// </summary>
+    [Tooltip("When targeting the ship, the angle of the cone the bogey " +
+        "fires in.")]
+    [SerializeField] private FloatVariable fireAngle;
+
+    /// <summary>
     /// Position of this weapon's target.
     /// </summary>
     [Tooltip("Position of this weapon's target.")]
@@ -24,8 +31,8 @@ public class AimAtTargetPosition : AimStrategy
             Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
         projectileTransform.Rotate(0, 0,
-            Random.Range(-(weapon.FireAngle * 0.5f), 
-            (weapon.FireAngle * 0.5f)));
+            Random.Range(-(fireAngle.Value * 0.5f), 
+            (fireAngle.Value * 0.5f)));
 
         projectileTransform.position = weapon.transform.position +
             (projectileTransform.up * weapon.Radius);

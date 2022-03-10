@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraBounds: {fileID: 11400000, guid: 7740e7b14ffa9c44cbae3d6f85e9a5e9, type: 2}
+  failsafeThreshold: 20
   visibilityRenderers:
   - {fileID: 2946597621473564722}
 --- !u!1 &4659080547492612499

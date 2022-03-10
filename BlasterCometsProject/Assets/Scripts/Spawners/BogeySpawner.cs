@@ -17,17 +17,23 @@ public class BogeySpawner : MonoBehaviour
     [SerializeField] private Settings settings;
 
     /// <summary>
-    /// Bounds of the main camera.
+    /// Prefab representing a bogey.
     /// </summary>
     [Header("General")]
+    [Tooltip("Prefab representing a bogey.")]
+    [SerializeField] private GameObject bogeyPrefab;
+
+    /// <summary>
+    /// Bounds of the main camera.
+    /// </summary>
     [Tooltip("Bounds of the main camera.")]
     [SerializeField] private CameraBounds cameraBounds;
 
     /// <summary>
-    /// Prefab representing a bogey.
+    /// Is the bogey being spawned a large bogey?
     /// </summary>
-    [Tooltip("Prefab representing a bogey.")]
-    [SerializeField] private GameObject bogeyPrefab;
+    [Tooltip("Is the bogey being spawned a large bogey?")]
+    [SerializeField] private bool isLargeBogey;
 
     /// <summary>
     /// Pool from which destroyed ship's explosions will be spawned from.
@@ -42,6 +48,11 @@ public class BogeySpawner : MonoBehaviour
     /// </summary>
     [Tooltip("Pool from which bogey projectiles will be spawned from.")]
     [SerializeField] private ObjectPool projectilePool;
+
+    /// <summary>
+    /// Combat Target for the bogey object.
+    /// </summary>
+    private CombatTarget bogeyCombatTarget;
 
     /// <summary>
     /// Exploder module for the bogey object.
@@ -67,6 +78,11 @@ public class BogeySpawner : MonoBehaviour
 
         bogeyExploder = bogeyObject.GetComponent<Exploder>();
         bogeyExploder.ExplosionPool = explosionPool;
+
+        bogeyCombatTarget = bogeyObject.GetComponent<CombatTarget>();
+        bogeyCombatTarget.PointValue = isLargeBogey ?
+            settings.GameParameters.BogeyLargePointsAwarded :
+            settings.GameParameters.BogeySmallPointsAwarded;
 
         ConfigureBogeyRelay();
     }
@@ -117,8 +133,6 @@ public class BogeySpawner : MonoBehaviour
         {
             bogeyRelay.Weapon.Cooldown =
                 settings.GameParameters.BogeyFireRate;
-            bogeyRelay.Weapon.FireAngle =
-                settings.GameParameters.BogeyFireAngle;
             bogeyRelay.Weapon.ProjectilePool = projectilePool;
             bogeyRelay.Weapon.ProjectileLifetime =
                 settings.GameParameters.BogeyProjectileLifeTime;

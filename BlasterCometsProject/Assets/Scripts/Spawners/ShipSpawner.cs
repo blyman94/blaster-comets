@@ -83,7 +83,6 @@ public class ShipSpawner : MonoBehaviour
     {
         HandleShipRespawn();
     }
-
     private void OnDisable()
     {
         shipExploder.EntityExploded -= StartRespawnTimer;
@@ -102,6 +101,8 @@ public class ShipSpawner : MonoBehaviour
 
         if (shipRelay != null)
         {
+            shipRelay.Rigidbody2D.drag = settings.GameParameters.ShipDrag;
+
             shipRelay.Weapon.Cooldown = 
                 settings.GameParameters.ShipFireCooldown;
             shipRelay.Weapon.ProjectilePool = projectilePool;

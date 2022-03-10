@@ -6,6 +6,46 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameParameters : ScriptableObject
 {
+    #region Scoring Parameters
+    /// <summary>
+    /// Number of points awarded when the player destroys a large bogey.
+    /// </summary>
+    [Header("Bogey")]
+    [Header("Score Award Parameters")]
+    [Tooltip("Number of points awarded when the player destroys a " + 
+        "large bogey.")]
+    public int BogeyLargePointsAwarded = 200;
+
+    /// <summary>
+    /// Number of points awarded when the player destroys a small bogey.
+    /// </summary>
+    [Tooltip("Number of points awarded when the player destroys a " + 
+        "small bogey.")]
+    public int BogeySmallPointsAwarded = 1000;
+
+    /// <summary>
+    /// Number of points awarded when the player destroys a large meteoroid.
+    /// </summary>
+    [Header("Meteoroid")]
+    [Tooltip("Number of points awarded when the player destroys a" +
+        "large meteoroid.")]
+    public int MeteoroidLargePointsAwarded = 20;
+
+    /// <summary>
+    /// Number of points awarded when the player destroys a medium meteoroid.
+    /// </summary>
+    [Tooltip("Number of points awarded when the player destroys a" +
+        "medium meteoroid.")]
+    public int MeteoroidMediumPointsAwarded = 50;
+
+    /// <summary>
+    /// Number of points awarded when the player destroys a small meteoroid.
+    /// </summary>
+    [Tooltip("Number of points awarded when the player destroys a " + 
+        "small meteoroid.")]
+    public int MeteoroidSmallPointsAwarded = 100;
+    #endregion
+
     #region Bogey Parameters
     /// <summary>
     /// When targeting the ship, the angle of the cone the bogey fires in.
@@ -14,7 +54,23 @@ public class GameParameters : ScriptableObject
     [Header("Bogey Parameters")]
     [Tooltip("When targeting the ship, the angle of the cone the bogey " +
         "fires in.")]
-    public float BogeyFireAngle = 60;
+    public float BogeyFireAngleStart = 120;
+
+    /// <summary>
+    /// When targeting the ship, the minimum angle of the cone the bogey fires 
+    /// in.
+    /// </summary>
+    [Tooltip("When targeting the ship, the minimum angle of the cone the " +
+        "bogey fires in.")]
+    public float BogeyFireAngleMinimum = 10;
+
+    /// <summary>
+    /// How many points must the player score before the bogey is at maximum
+    /// accuracy?
+    /// </summary>
+    [Tooltip("How many points must the player score before the bogey " +
+        "is at maximum accuracy?")]
+    public int BogeyFireAngleMinimumScore = 70000;
 
     /// <summary>
     /// Time between projectiles fired by bogeys.
@@ -186,9 +242,16 @@ public class GameParameters : ScriptableObject
     public float ShipProjectileTravelSpeed = 10;
 
     /// <summary>
-    /// Max speed at which the GameObject can travel.
+    /// The rate at which the ship slows down when thruster is inactive.
     /// </summary>
     [Header("Movement")]
+    [Tooltip("The rate at which the ship slows down when thruster is " + 
+        "inactive.")]
+    public float ShipDrag = 1;
+
+    /// <summary>
+    /// Max speed at which the GameObject can travel.
+    /// </summary>
     [Tooltip("Max speed at which the GameObject can travel.")]
     public float ShipMaxSpeed = 10;
 

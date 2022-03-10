@@ -57,11 +57,6 @@ public class Weapon : MonoBehaviour
     /// Determines how fast the projectile moves when fired.
     /// </summary>
     public float ProjectileTravelSpeed { get; set; }
-
-    /// <summary>
-    /// Angle of the firing cone, centered on the target.
-    /// </summary>
-    public float FireAngle { get; set; }
     #endregion
 
     #region MonoBehaviour Methods

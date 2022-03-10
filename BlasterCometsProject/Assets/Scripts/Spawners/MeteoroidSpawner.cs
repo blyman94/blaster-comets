@@ -108,18 +108,6 @@ public class MeteoroidSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Calculates a random position to spawn large meteoroids based on main
-    /// camera bounds.
-    /// </summary>
-    /// <returns>Vector3 representing a random spawn position.</returns>
-    private Vector3 GetRandomSpawnPosition()
-    {
-        return new Vector3(Random.Range(cameraBounds.MinXBound,
-            cameraBounds.MaxXBound), Random.Range(cameraBounds.MinYBound,
-            cameraBounds.MaxYBound), 0);
-    }
-
-    /// <summary>
     /// Packs small meteoroids into medium meteoroids, then packs medium
     /// meteoroids into large meteoroids. Spawns large meteoroids randomly on
     /// the screen.
@@ -131,6 +119,11 @@ public class MeteoroidSpawner : MonoBehaviour
         {
             GameObject largeMeteoroidObject = MeteoroidLargePool.Get();
             largeMeteoroidObject.transform.SetParent(null);
+
+            CombatTarget largeMeteoroidCombatTarget = 
+                largeMeteoroidObject.GetComponent<CombatTarget>();
+            largeMeteoroidCombatTarget.PointValue =
+                settings.GameParameters.MeteoroidLargePointsAwarded;
 
             Meteoroid largeMeteoroid =
                 largeMeteoroidObject.GetComponent<Meteoroid>();
@@ -145,6 +138,11 @@ public class MeteoroidSpawner : MonoBehaviour
                 GameObject mediumMeteoroidObject = MeteoroidMediumPool.Get();
                 mediumMeteoroidObject.transform.SetParent(null);
 
+                CombatTarget mediumMeteoroidCombatTarget =
+                    mediumMeteoroidObject.GetComponent<CombatTarget>();
+                mediumMeteoroidCombatTarget.PointValue =
+                    settings.GameParameters.MeteoroidMediumPointsAwarded;
+
                 Meteoroid mediumMeteoroid =
                     mediumMeteoroidObject.GetComponent<Meteoroid>();
                 mediumMeteoroid.ActiveMeteoroidSet = activeMeteoroidSet;
@@ -158,6 +156,11 @@ public class MeteoroidSpawner : MonoBehaviour
                 {
                     GameObject smallMeteoroidObject = MeteoroidSmallPool.Get();
                     smallMeteoroidObject.transform.SetParent(null);
+
+                    CombatTarget smallMeteoroidCombatTarget =
+                        smallMeteoroidObject.GetComponent<CombatTarget>();
+                    smallMeteoroidCombatTarget.PointValue =
+                        settings.GameParameters.MeteoroidSmallPointsAwarded;
 
                     Meteoroid smallMeteoroid =
                         smallMeteoroidObject.GetComponent<Meteoroid>();
@@ -174,7 +177,8 @@ public class MeteoroidSpawner : MonoBehaviour
                 largeMeteoroid.ChildMeteoroidObjects.Add(mediumMeteoroidObject);
             }
 
-            largeMeteoroidObject.transform.position = GetRandomSpawnPosition();
+            largeMeteoroidObject.transform.position = 
+                cameraBounds.GetRandomPositionOn();
             largeMeteoroidObject.SetActive(true);
         }
     }

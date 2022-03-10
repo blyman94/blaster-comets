@@ -47,6 +47,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (hitTarget != null && targetTags.Contains(hitTarget.tag))
         {
             hitTarget.TakeHit();
+            hitTarget.AwardPoints();
         }
         OriginPool.Release(gameObject);
     }

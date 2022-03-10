@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9f8b6686ffc2469e168ecd185444e, type: 3}
   m_Name: Standard
   m_EditorClassIdentifier: 
-  BogeyFireAngle: 90
+  BogeyLargePointsAwarded: 200
+  BogeySmallPointsAwarded: 1000
+  MeteoroidLargePointsAwarded: 20
+  MeteoroidMediumPointsAwarded: 50
+  MeteoroidSmallPointsAwarded: 100
+  BogeyFireAngleStart: 120
+  BogeyFireAngleMinimum: 10
+  BogeyFireAngleMinimumScore: 70000
   BogeyFireRate: 1
   BogeyProjectileLifeTime: 1.125
   BogeyProjectileTravelSpeed: 8
   BogeyMoveSpeed: 1
-  BogeyMoveTimeRange: {x: 3, y: 5}
+  BogeyMoveTimeRange: {x: 5, y: 7}
   BogeyLargeSpawnThreshold: 2000
-  BogeyLifetime: 10
+  BogeyLifetime: 12
   BogeySmallSpawnThreshold: 10000
   BogeyOnlySmallSpawnThreshold: 40000
   BogeySpawnDelayRange: {x: 5, y: 10}
@@ -31,13 +38,14 @@ MonoBehaviour:
   MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
   MeteoroidTravelSpeedMultiplier: 1.5
   PointsPerExtraLife: 10000
-  ShipFireCooldown: 0.25
+  ShipFireCooldown: 0.2
   ShipHyperspaceCooldown: 1
   ShipHyperspaceInTime: 1
-  ShipProjectileLifeTime: 0.9
-  ShipProjectileTravelSpeed: 10
-  ShipMaxSpeed: 10
+  ShipProjectileLifeTime: 0.8
+  ShipProjectileTravelSpeed: 15
+  ShipDrag: 0.45
+  ShipMaxSpeed: 15
   ShipRotationSpeed: 150
-  ShipThrustForce: 650
+  ShipThrustForce: 850
   ShipRespawnTime: 3
   ShipStartingLives: 3
