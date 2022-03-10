@@ -2050,6 +2050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2098613985}
   - component: {fileID: 2098613984}
+  - component: {fileID: 2098613986}
   m_Layer: 0
   m_Name: MeteoroidSpawner
   m_TagString: Untagged
@@ -2070,7 +2071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: d74cae07e6b6c054fb91e8347038d242, type: 2}
+  activeMeteoroidSet: {fileID: 11400000, guid: f74b20298bd89a544b37f76e06c98427, type: 2}
   cameraBounds: {fileID: 11400000, guid: 7740e7b14ffa9c44cbae3d6f85e9a5e9, type: 2}
+  playerScore: {fileID: 11400000, guid: e38dbee29423a3a49a38f65cad3db195, type: 2}
   meteoroidLargePrefab: {fileID: 989486511033135835, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
   meteoroidMediumPrefab: {fileID: 8303359078020874389, guid: 3ee75d45375e1d549a8f880e2de8d088, type: 3}
   meteoroidSmallPrefab: {fileID: 3809390334116679125, guid: 22e5afc3024d65d4d97aa1c41fccaf0b, type: 3}
@@ -2093,3 +2096,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098613986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098613983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61d82838aa2ed3459d80c639af442a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: faba263878a315a46b4064b4044e2dde, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2098613984}
+        m_TargetAssemblyTypeName: MeteoroidSpawner, Assembly-CSharp
+        m_MethodName: StartNewLevelTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

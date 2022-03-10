@@ -121,7 +121,18 @@ public class CommandRelay : MonoBehaviour
     /// </summary>
     public void StartFire()
     {
-        if (!hyperspace.InHyperspace)
+        // Since bogeys can also fire, check for hyperspace component.
+        if (hyperspace != null)
+        {
+            if (!hyperspace.InHyperspace)
+            {
+                if (weapon != null)
+                {
+                    weapon.IsFiring = true;
+                }
+            }
+        }
+        else
         {
             if (weapon != null)
             {

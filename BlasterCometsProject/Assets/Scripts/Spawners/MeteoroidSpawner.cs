@@ -13,11 +13,23 @@ public class MeteoroidSpawner : MonoBehaviour
     [SerializeField] private Settings settings;
 
     /// <summary>
-    /// Bounds of the main camera.
+    /// Runtime set containing active meteoroid GameObjects.
     /// </summary>
     [Header("General")]
+    [Tooltip("Runtime set containing active meteoroid GameObjects.")]
+    [SerializeField] private RuntimeSet activeMeteoroidSet;
+
+    /// <summary>
+    /// Bounds of the main camera.
+    /// </summary>
     [Tooltip("Bounds of the main camera.")]
     [SerializeField] private CameraBounds cameraBounds;
+
+    /// <summary>
+    /// IntVariable representing the player's current score.
+    /// </summary>
+    [Tooltip("IntVariable representing the player's current score.")]
+    [SerializeField] private IntVariable playerScore;
 
     /// <summary>
     /// GameObject prefab representing the large meteoroid.
@@ -63,12 +75,37 @@ public class MeteoroidSpawner : MonoBehaviour
     [Tooltip("Object pool for small meteoroids.")]
     [SerializeField] private ObjectPool MeteoroidSmallPool;
 
+    /// <summary>
+    /// Timer to track time between large meteoroid spawns.
+    /// </summary>
+    private float levelTimer = 0;
+
     #region MonoBehaviour Methods
     private void Start()
     {
+        if (activeMeteoroidSet != null)
+        {
+            activeMeteoroidSet.Clear();
+        }
         SpawnLargeMeteoroids();
     }
+    private void Update()
+    {
+        if (levelTimer > 0)
+        {
+            levelTimer -= Time.deltaTime;
+            if (levelTimer <= 0)
+            {
+                SpawnLargeMeteoroids();
+            }
+        }
+    }
     #endregion
+
+    public void StartNewLevelTimer()
+    {
+        levelTimer = settings.GameParameters.TimeBetweenLevels;
+    }
 
     /// <summary>
     /// Calculates a random position to spawn large meteoroids based on main
@@ -77,8 +114,8 @@ public class MeteoroidSpawner : MonoBehaviour
     /// <returns>Vector3 representing a random spawn position.</returns>
     private Vector3 GetRandomSpawnPosition()
     {
-        return new Vector3(Random.Range(cameraBounds.MinXBound, 
-            cameraBounds.MaxXBound), Random.Range(cameraBounds.MinYBound, 
+        return new Vector3(Random.Range(cameraBounds.MinXBound,
+            cameraBounds.MaxXBound), Random.Range(cameraBounds.MinYBound,
             cameraBounds.MaxYBound), 0);
     }
 
@@ -89,33 +126,42 @@ public class MeteoroidSpawner : MonoBehaviour
     /// </summary>
     private void SpawnLargeMeteoroids()
     {
-        for (int i = 0; i < settings.GameParameters.MeteoroidLargeCount; i++)
+        int largeMeteoroidCount = LargeMeteoroidCount();
+        for (int i = 0; i < largeMeteoroidCount; i++)
         {
             GameObject largeMeteoroidObject = MeteoroidLargePool.Get();
             largeMeteoroidObject.transform.SetParent(null);
+
             Meteoroid largeMeteoroid =
                 largeMeteoroidObject.GetComponent<Meteoroid>();
+            largeMeteoroid.ActiveMeteoroidSet = activeMeteoroidSet;
+            largeMeteoroid.ChildMeteoroidObjects.Clear();
             largeMeteoroid.ExplosionPool = explosionPool;
-            largeMeteoroid.TravelSpeedRange = 
+            largeMeteoroid.TravelSpeedRange =
                 settings.GameParameters.MeteoroidTravelSpeedRange;
 
             for (int j = 0; j < settings.GameParameters.MeteoroidMediumCount; j++)
             {
                 GameObject mediumMeteoroidObject = MeteoroidMediumPool.Get();
                 mediumMeteoroidObject.transform.SetParent(null);
+
                 Meteoroid mediumMeteoroid =
                     mediumMeteoroidObject.GetComponent<Meteoroid>();
+                mediumMeteoroid.ActiveMeteoroidSet = activeMeteoroidSet;
+                mediumMeteoroid.ChildMeteoroidObjects.Clear();
                 mediumMeteoroid.ExplosionPool = explosionPool;
-                mediumMeteoroid.TravelSpeedRange = 
-                    settings.GameParameters.MeteoroidTravelSpeedRange * 
+                mediumMeteoroid.TravelSpeedRange =
+                    settings.GameParameters.MeteoroidTravelSpeedRange *
                     settings.GameParameters.MeteoroidTravelSpeedMultiplier;
 
                 for (int k = 0; k < settings.GameParameters.MeteoroidSmallCount; k++)
                 {
                     GameObject smallMeteoroidObject = MeteoroidSmallPool.Get();
                     smallMeteoroidObject.transform.SetParent(null);
+
                     Meteoroid smallMeteoroid =
                         smallMeteoroidObject.GetComponent<Meteoroid>();
+                    smallMeteoroid.ActiveMeteoroidSet = activeMeteoroidSet;
                     smallMeteoroid.ExplosionPool = explosionPool;
                     smallMeteoroid.TravelSpeedRange =
                         settings.GameParameters.MeteoroidTravelSpeedRange *
@@ -131,5 +177,22 @@ public class MeteoroidSpawner : MonoBehaviour
             largeMeteoroidObject.transform.position = GetRandomSpawnPosition();
             largeMeteoroidObject.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// Returns the number of large meteoroids that should be spawned based on
+    /// the player's score.
+    /// </summary>
+    /// <returns></returns>
+    public int LargeMeteoroidCount()
+    {
+        float playerScoreRatio = (float)playerScore.Value /
+            settings.GameParameters.MeteoroidMaxSpawnScore;
+        float rawCount =
+            ((settings.GameParameters.MeteoroidLevelStartCountRange.y -
+            settings.GameParameters.MeteoroidLevelStartCountRange.x) *
+            playerScoreRatio) +
+            settings.GameParameters.MeteoroidLevelStartCountRange.x;
+        return (Mathf.FloorToInt(rawCount));
     }
 }

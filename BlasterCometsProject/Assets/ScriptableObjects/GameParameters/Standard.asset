@@ -23,12 +23,14 @@ MonoBehaviour:
   BogeySmallSpawnThreshold: 10000
   BogeyOnlySmallSpawnThreshold: 40000
   BogeySpawnDelayRange: {x: 5, y: 10}
-  MeteoroidLargeCount: 4
+  MeteoroidMaxSpawnScore: 10000
+  TimeBetweenLevels: 3
+  MeteoroidLevelStartCountRange: {x: 4, y: 11}
   MeteoroidMediumCount: 2
   MeteoroidSmallCount: 2
   MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
   MeteoroidTravelSpeedMultiplier: 1.5
-  ShipFireCooldown: 0.5
+  ShipFireCooldown: 0.25
   ShipHyperspaceCooldown: 1
   ShipHyperspaceInTime: 1
   ShipProjectileLifeTime: 0.9

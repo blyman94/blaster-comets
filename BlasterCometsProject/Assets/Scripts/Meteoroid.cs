@@ -15,6 +15,20 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     [SerializeField] private new Rigidbody2D rigidbody2D;
 
     /// <summary>
+    /// Bounds of the main camera.
+    /// </summary>
+    [Tooltip("Bounds of the main camera.")]
+    [SerializeField] private CameraBounds cameraBounds;
+
+    /// <summary>
+    /// How far from the center of the screen can this meteoroid be before it's
+    /// teleported back to the camera boundary?
+    /// </summary>
+    [Tooltip("How far from the center of the screen can this meteoroid " +
+        "before it's teleported back to the camera boundary?")]
+    [SerializeField] private float failsafeThreshold;
+
+    /// <summary>
     /// SpriteRenderer used to represent the meteoroid.
     /// </summary>
     [Header("Graphics")]
@@ -26,6 +40,11 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     /// </summary>
     [Tooltip("Array of potential sprites used to represent this meteoroid.")]
     [SerializeField] private Sprite[] meteoroidSprites;
+
+    /// <summary>
+    /// Runtime set containing active meteoroid GameObjects.
+    /// </summary>
+    private RuntimeSet activeMeteoroidSet;
 
     #region Properties
     /// <summary>
@@ -41,6 +60,25 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     public ObjectPool ExplosionPool { get; set; }
 
     /// <summary>
+    /// Runtime set containing active meteoroid GameObjects.
+    /// </summary>
+    public RuntimeSet ActiveMeteoroidSet
+    {
+        get
+        {
+            return activeMeteoroidSet;
+        }
+        set
+        {
+            activeMeteoroidSet = value;
+            if (activeMeteoroidSet != null)
+            {
+                activeMeteoroidSet.Add(gameObject);
+            }
+        }
+    }
+
+    /// <summary>
     /// What range of speeds can a meteoroid travel?
     /// </summary>
     public Vector2 TravelSpeedRange { get; set; }
@@ -54,6 +92,13 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     private void Awake()
     {
         ChildMeteoroidObjects = new List<GameObject>();
+    }
+    private void Update()
+    {
+        if (transform.position.magnitude >= failsafeThreshold)
+        {
+            transform.position = cameraBounds.GetRandomPositionOn();
+        }
     }
     private void OnEnable()
     {
@@ -80,6 +125,7 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     {
         SpawnExplosionParticleSystem();
         SpawnChildMeteoroids();
+        activeMeteoroidSet.Remove(gameObject);
         OriginPool.Release(gameObject);
     }
 

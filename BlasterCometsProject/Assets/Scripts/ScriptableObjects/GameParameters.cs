@@ -87,12 +87,31 @@ public class GameParameters : ScriptableObject
 
     #region Meteoroid Parameters
     /// <summary>
-    /// Number of large meteoroids to spawn.
+    /// Score at which the maximum amount of meteoroids will be spawned at the 
+    /// beginning of a level.
+    /// </summary>
+    [Header("General")]
+    [Header("Meteoroid Parameters")]
+    [Tooltip("Score at which the maximum amount of meteoroids will be " +
+        "spawned at the beginning of a level.")]
+    public int MeteoroidMaxSpawnScore = 10000;
+
+    /// <summary>
+    /// Once the meteoroids are clear, how long before the next wave of 
+    /// meteoroids are spawned?
+    /// </summary>
+    [Tooltip("Once meteoroids are clear, how long before the next wave of  " +
+        "meteoroids are spawned?")]
+    public int TimeBetweenLevels = 3;
+
+    /// <summary>
+    /// Range of large meteoroid counts that can be spawned at the beginning of
+    /// a level.
     /// </summary>
     [Header("Counts")]
-    [Header("Meteoroid Parameters")]
-    [Tooltip("Number of large meteoroids to spawn.")]
-    public int MeteoroidLargeCount = 1;
+    [Tooltip("Range of large meteoroid counts that can be spawned at the " + 
+        "beginning of a level.")]
+    public Vector2 MeteoroidLevelStartCountRange = new Vector2(4, 11);
 
     /// <summary>
     /// Number of small meteoroids spawned when a medium meteoroid is destroyed.
