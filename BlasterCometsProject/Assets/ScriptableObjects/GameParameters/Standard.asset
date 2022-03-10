@@ -30,6 +30,7 @@ MonoBehaviour:
   MeteoroidSmallCount: 2
   MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
   MeteoroidTravelSpeedMultiplier: 1.5
+  PointsPerExtraLife: 10000
   ShipFireCooldown: 0.25
   ShipHyperspaceCooldown: 1
   ShipHyperspaceInTime: 1

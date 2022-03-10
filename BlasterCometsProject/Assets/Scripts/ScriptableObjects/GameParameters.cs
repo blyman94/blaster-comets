@@ -142,11 +142,20 @@ public class GameParameters : ScriptableObject
     #endregion
 
     #region Ship Parameters
+
+    /// <summary>
+    /// Ship will get an extra life every time they gain this many points.
+    /// </summary>
+    [Header("General")]
+    [Header("Ship Parameters")]
+    [Tooltip("Ship will get an extra life every time they gain this " + 
+        "many points.")]
+    public int PointsPerExtraLife = 10000;
+    
     /// <summary>
     /// Minimum time between projectiles fired by the ship.
     /// </summary>
     [Header("Combat")]
-    [Header("Ship Parameters")]
     [Tooltip("Minimum time between projectiles fired by the ship.")]
     public float ShipFireCooldown = 0.5f;
 
