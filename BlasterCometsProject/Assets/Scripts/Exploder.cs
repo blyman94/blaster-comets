@@ -70,7 +70,7 @@ public class Exploder : MonoBehaviour
 
         if (entityRenderer != null)
         {
-            entityRenderer.color = Color.clear;
+            entityRenderer.gameObject.SetActive(false);
         }
 
         if (entityRelay != null)
@@ -95,7 +95,7 @@ public class Exploder : MonoBehaviour
     {
         if (entityRenderer != null)
         {
-            entityRenderer.color = originalColor;
+            entityRenderer.gameObject.SetActive(true);
         }
         if (entityCollider != null)
         {

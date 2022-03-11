@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2c0593305987f124aaa4fb606f0e86b5, type: 3}
+    - target: {fileID: 989486511736304600, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ed54a36e40c5d04d813174fd0c56185, type: 2}
     - target: {fileID: 989486511736304601, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
       propertyPath: m_Name
       value: MeteoroidMedium

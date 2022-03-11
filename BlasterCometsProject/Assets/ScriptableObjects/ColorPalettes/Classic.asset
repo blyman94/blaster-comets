@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
+  m_Name: Classic
+  m_EditorClassIdentifier: 
+  BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  LargeBogeyColor: {r: 1, g: 1, b: 1, a: 1}
+  SmallBogeyColor: {r: 1, g: 1, b: 1, a: 1}
+  LargeMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
+  MediumMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
+  SmallMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
+  ProjectileBogeyColor: {r: 1, g: 1, b: 1, a: 1}
+  ProjectileFriendlyColor: {r: 1, g: 1, b: 1, a: 1}
+  ShipColor: {r: 1, g: 1, b: 1, a: 1}
+  ThrusterColor: {r: 1, g: 1, b: 1, a: 1}
