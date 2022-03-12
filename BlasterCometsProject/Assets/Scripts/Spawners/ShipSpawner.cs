@@ -13,9 +13,15 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private Settings settings;
 
     /// <summary>
-    /// IntVariable representing the number of lives the player has remaining.
+    /// Event to signal the game has ended.
     /// </summary>
     [Header("General")]
+    [Tooltip("Event to signal the game has ended.")]
+    [SerializeField] private GameEvent GameOverEvent;
+
+    /// <summary>
+    /// IntVariable representing the number of lives the player has remaining.
+    /// </summary>
     [Tooltip("IntVariable representing the number of lives the player has " +
         "remaining.")]
     [SerializeField] private IntVariable playerLives;
@@ -73,7 +79,7 @@ public class ShipSpawner : MonoBehaviour
         shipObject = Instantiate(shipPrefab, Vector3.zero, Quaternion.identity);
         ConfigureShip();
         ConfigureShipExploder();
-        SpawnNewShip();
+        shipObject.SetActive(false);
     }
     private void OnEnable()
     {
@@ -103,10 +109,10 @@ public class ShipSpawner : MonoBehaviour
         {
             shipRelay.Rigidbody2D.drag = settings.GameParameters.ShipDrag;
 
-            shipRelay.Weapon.Cooldown = 
+            shipRelay.Weapon.Cooldown =
                 settings.GameParameters.ShipFireCooldown;
             shipRelay.Weapon.ProjectilePool = projectilePool;
-            shipRelay.Weapon.ProjectileLifetime = 
+            shipRelay.Weapon.ProjectileLifetime =
                 settings.GameParameters.ShipProjectileLifeTime;
             shipRelay.Weapon.ProjectileTravelSpeed =
                 settings.GameParameters.ShipProjectileTravelSpeed;
@@ -145,8 +151,10 @@ public class ShipSpawner : MonoBehaviour
             }
             else
             {
-                // TODO: Trigger formal end game sequence here.
-                Debug.Log("Game Over!");
+                if (GameOverEvent != null)
+                {
+                    GameOverEvent.Raise();
+                }
             }
             respawnTimer = -1;
         }
@@ -155,8 +163,12 @@ public class ShipSpawner : MonoBehaviour
     /// <summary>
     /// Spawns a new ship by resetting the state of the existing ship.
     /// </summary>
-    private void SpawnNewShip()
+    public void SpawnNewShip()
     {
+        if (!shipObject.activeInHierarchy)
+        {
+            shipObject.SetActive(true);
+        }
         shipObject.transform.position = Vector3.zero;
         shipObject.transform.rotation = Quaternion.identity;
         shipExploder.Unexplode();

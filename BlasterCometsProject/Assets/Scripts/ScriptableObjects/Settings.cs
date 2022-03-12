@@ -6,7 +6,13 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu]
 public class Settings : ScriptableObject
-{
+{   
+    /// <summary>
+    /// Current color palette of the game.
+    /// </summary>
+    [Tooltip("Current color palette of the game.")]
+    public ColorPalette CurrentColorPalette;
+
     /// <summary>
     /// Current parameters of the game.
     /// </summary>
@@ -19,5 +25,13 @@ public class Settings : ScriptableObject
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// <summary>
+    /// Quits the game.
+    /// </summary>
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

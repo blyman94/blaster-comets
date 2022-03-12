@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: NeonLines
   m_EditorClassIdentifier: 
+  Name: NeonLines
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   BogeyExplosionColor: {r: 1, g: 0.9529412, b: 0, a: 1}
   MeteoroidExplosionColor: {r: 1, g: 0, b: 0.88235295, a: 1}
@@ -25,3 +26,5 @@ MonoBehaviour:
   ProjectileFriendlyColor: {r: 0, g: 0.91865754, b: 1, a: 1}
   ShipColor: {r: 0, g: 0.91764706, b: 1, a: 1}
   ThrusterColor: {r: 0, g: 0.91764706, b: 1, a: 1}
+  HeaderColor: {r: 1, g: 0, b: 0.88235295, a: 1}
+  LabelColor: {r: 1, g: 0.9529412, b: 0, a: 1}

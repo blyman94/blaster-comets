@@ -5,7 +5,13 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu]
 public class ColorPalette : ScriptableObject
-{   
+{
+    /// <summary>
+    /// Name of the color Palette.
+    /// </summary>
+    [Tooltip("Name of the color Palette.")]
+    public string Name = "New Color Palette";
+    
     /// <summary>
     /// Color of the background.
     /// </summary>
@@ -89,4 +95,17 @@ public class ColorPalette : ScriptableObject
     /// </summary>
     [Tooltip("Color of the thruster.")]
     public Color ThrusterColor = Color.white;
+
+    /// <summary>
+    /// Color of the header UI.
+    /// </summary>
+    [Header("UI Colors")]
+    [Tooltip("Color of the header UI.")]
+    public Color HeaderColor = Color.white;
+
+    /// <summary>
+    /// Color of the label UI.
+    /// </summary>
+    [Tooltip("Color of the label UI.")]
+    public Color LabelColor = Color.white;
 }

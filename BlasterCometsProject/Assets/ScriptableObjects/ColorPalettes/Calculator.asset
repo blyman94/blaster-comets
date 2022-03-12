@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: Calculator
   m_EditorClassIdentifier: 
+  Name: Calculator
   BackgroundColor: {r: 0.08479884, g: 0.10610535, b: 0.11320752, a: 1}
   BogeyExplosionColor: {r: 1, g: 0.5764706, b: 0, a: 1}
   MeteoroidExplosionColor: {r: 1, g: 0.5764706, b: 0, a: 1}
@@ -25,3 +26,5 @@ MonoBehaviour:
   ProjectileFriendlyColor: {r: 1, g: 1, b: 1, a: 1}
   ShipColor: {r: 1, g: 1, b: 1, a: 1}
   ThrusterColor: {r: 1, g: 1, b: 1, a: 1}
+  HeaderColor: {r: 1, g: 1, b: 1, a: 1}
+  LabelColor: {r: 1, g: 0.5764706, b: 0, a: 1}

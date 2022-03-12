@@ -16,14 +16,15 @@ public class RuntimeSet : ScriptableObject
     /// <summary>
     /// List containing items added to the runtime set.
     /// </summary>
-    private List<GameObject> items = new List<GameObject>();
+    [Tooltip("List containing items added to the runtime set.")]
+    public List<GameObject> Items;
 
     /// <summary>
     /// Adds an item to the runtime set.
     /// </summary>
     public void Add(GameObject item)
     {
-        items.Add(item);
+        Items.Add(item);
     }
 
     /// <summary>
@@ -32,7 +33,7 @@ public class RuntimeSet : ScriptableObject
     /// </summary>
     public void AddUnique(GameObject item)
     {
-        if (!items.Contains(item))
+        if (!Items.Contains(item))
         {
             Add(item);
         }
@@ -43,7 +44,7 @@ public class RuntimeSet : ScriptableObject
     /// </summary>
     public void Clear()
     {
-        items.Clear();
+        Items.Clear();
     }
 
     /// <summary>
@@ -54,7 +55,7 @@ public class RuntimeSet : ScriptableObject
     /// otherwise.</returns>
     public bool Contains(GameObject item)
     {
-        return items.Contains(item);
+        return Items.Contains(item);
     }
 
     /// <summary>
@@ -64,7 +65,7 @@ public class RuntimeSet : ScriptableObject
     /// set.</returns>
     public int Count()
     {
-        return items.Count;
+        return Items.Count;
     }
 
     /// <summary>
@@ -74,9 +75,9 @@ public class RuntimeSet : ScriptableObject
     /// <param name="item">GameObject item to be removed from the set.</param>
     public void Remove(GameObject item)
     {
-        if (items.Contains(item))
+        if (Items.Contains(item))
         {
-            items.Remove(item);
+            Items.Remove(item);
 
             if (Count() == 0 && onEmptyEvent != null)
             {

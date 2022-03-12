@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2d48b8154ef7348ba124025e4b98ba, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: 827b119274de49149bbd744acb6245a2, type: 3}
+  m_Name: GameOver
   m_EditorClassIdentifier: 
-  CurrentColorPalette: {fileID: 11400000, guid: ba0ceddd609a7b542b5e5ffe3508adb3, type: 2}
-  GameParameters: {fileID: 11400000, guid: 23c003efe0aa6f343819c92a7f39a32c, type: 2}

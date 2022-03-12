@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: Watermelon
   m_EditorClassIdentifier: 
+  Name: Watermelon
   BackgroundColor: {r: 0.01514773, g: 0.21698111, b: 0.021098448, a: 1}
   BogeyExplosionColor: {r: 1, g: 0.101960786, b: 0.03137255, a: 1}
   MeteoroidExplosionColor: {r: 1, g: 0, b: 0.8117647, a: 1}
@@ -25,3 +26,5 @@ MonoBehaviour:
   ProjectileFriendlyColor: {r: 0, g: 1, b: 0.039215688, a: 1}
   ShipColor: {r: 0, g: 1, b: 0.038595438, a: 1}
   ThrusterColor: {r: 0, g: 1, b: 0.039215688, a: 1}
+  HeaderColor: {r: 1, g: 0, b: 0.8117647, a: 1}
+  LabelColor: {r: 0, g: 1, b: 0.039215688, a: 1}
