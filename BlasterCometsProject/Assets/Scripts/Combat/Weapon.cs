@@ -6,10 +6,16 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     /// <summary>
+    /// Event raised when the weapon is fired.
+    /// </summary>
+    [Header("General")]
+    [Tooltip("Event raised when the weapon is fired.")]
+    [SerializeField] private GameEvent fireEvent;
+
+    /// <summary>
     /// Transform whose position will dictate where the projectile is spawned 
     /// and the spawned projectile's rotation.
     /// </summary>
-    [Header("General")]
     [Tooltip("Transform whose position will dictate where the projectile " +
         "is spawned and the spawned projectile's rotation.")]
     public Transform ProjectileStart;
@@ -90,6 +96,8 @@ public class Weapon : MonoBehaviour
 
             Projectile projectile = projectileObject.GetComponent<Projectile>();
             projectile.Fire(ProjectileTravelSpeed, ProjectileLifetime);
+
+            fireEvent.Raise();
 
             cooldownTimer = Cooldown;
         }

@@ -6,6 +6,21 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameParameters : ScriptableObject
 {
+    #region Music Parameters
+    /// <summary>
+    /// Number of points the player needs to change the song.
+    /// </summary>
+    [Header("Music Parameters")]
+    [Tooltip("Number of points the player needs to change the song.")]
+    public int PointsPerNewSong = 10000;
+
+    /// <summary>
+    /// How long it takes to fade the original song back in.
+    /// </summary>
+    [Tooltip("How long it takes to fade the original song back in.")]
+    public float MusicResetTime = 1.0f;
+    #endregion
+
     #region Scoring Parameters
     /// <summary>
     /// Number of points awarded when the player destroys a large bogey.

@@ -32,6 +32,19 @@ public class Thruster : MonoBehaviour
     [Tooltip("Particle system representing the thruster visually.")]
     [SerializeField] private ParticleSystem thrusterParticleSystem;
 
+    /// <summary>
+    /// Event to raise when the thruster becomes active.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to raise when the thruster becomes active.")]
+    [SerializeField] private GameEvent thrusterActiveEvent;
+
+    /// <summary>
+    /// Event to raise when the thruster becomes inactive.
+    /// </summary>
+    [Tooltip("Event to raise when the thruster becomes inactive.")]
+    [SerializeField] private GameEvent thrusterInactiveEvent;
+
     #region Properties
     /// <summary>
     /// Is the thruster currently active?
@@ -58,11 +71,13 @@ public class Thruster : MonoBehaviour
     {
         if (Active && !thrusterParticleSystem.isPlaying)
         {
+            thrusterActiveEvent.Raise();
             thrusterParticleSystem.Play();
         }
 
         if (!Active && thrusterParticleSystem.isPlaying)
         {
+            thrusterInactiveEvent.Raise();
             thrusterParticleSystem.Stop();
         }
     }

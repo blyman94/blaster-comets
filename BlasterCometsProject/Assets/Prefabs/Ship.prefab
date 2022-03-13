@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaab2fbe7a3f1743b7111e999896acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireEvent: {fileID: 11400000, guid: 585f1f4777b628a4f82d77bfb94ef8e3, type: 2}
   ProjectileStart: {fileID: 3374253258290881779}
   aimStrategy: {fileID: 11400000, guid: b148adc813f9be844b93fe8bbe28b761, type: 2}
   Radius: 1
@@ -215,13 +216,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f0011687990dc479b57e8ed74e92ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: {fileID: 0}
+  playerScore: {fileID: 11400000, guid: e38dbee29423a3a49a38f65cad3db195, type: 2}
   OnHitResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3998179754863858242}
         m_TargetAssemblyTypeName: ShipExploder, Assembly-CSharp
         m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 44fae5e449d9bf046b8d755f5e99f9a5, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 80cdab009153ce746ab3a54345ceca1d, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5148,6 +5173,8 @@ MonoBehaviour:
   rigidbody2D: {fileID: 3374253257614744455}
   rotationTransform: {fileID: 3374253257614744453}
   thrusterParticleSystem: {fileID: 3374253257973502394}
+  thrusterActiveEvent: {fileID: 11400000, guid: a1e6e7388c5ccb44aa4f1b0bd29e9889, type: 2}
+  thrusterInactiveEvent: {fileID: 11400000, guid: 80cdab009153ce746ab3a54345ceca1d, type: 2}
 --- !u!1 &3374253258183998269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5380,8 @@ MonoBehaviour:
   collider2D: {fileID: 3250837122597796759}
   hyperspaceAnimator: {fileID: 963600832793192443}
   hyperspaceTransform: {fileID: 3374253257614744453}
+  hyperspaceEnterEvent: {fileID: 11400000, guid: be24dcbeb5218c943a7e87f9716679c8, type: 2}
+  hyperspaceExitEvent: {fileID: 11400000, guid: 23fb021a4ffcce14aa04ab635a639cbc, type: 2}
 --- !u!1 &7475240063406686220
 GameObject:
   m_ObjectHideFlags: 0

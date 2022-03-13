@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf3c450f08895248854120418b885dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explodeEvent: {fileID: 11400000, guid: 2d913f56252796445a29e539b607608c, type: 2}
   rigidbody2D: {fileID: 4184118057353847991}
   cameraBounds: {fileID: 11400000, guid: 7740e7b14ffa9c44cbae3d6f85e9a5e9, type: 2}
   failsafeThreshold: 20

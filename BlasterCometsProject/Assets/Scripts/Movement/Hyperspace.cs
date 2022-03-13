@@ -38,6 +38,19 @@ public class Hyperspace : MonoBehaviour
     [SerializeField] private Transform hyperspaceTransform;
 
     /// <summary>
+    /// Event to raise when a ship enters hyper space.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to raise when a ship enters hyper space.")]
+    [SerializeField] private GameEvent hyperspaceEnterEvent;
+
+    /// <summary>
+    /// Event to raise when a ship exits hyper space.
+    /// </summary>
+    [Tooltip("Event to raise when a ship exits hyper space.")]
+    [SerializeField] private GameEvent hyperspaceExitEvent;
+
+    /// <summary>
     /// Timer to track how long the GameObject has been in hyperspace.
     /// </summary>
     private float hyperspaceInTimer;
@@ -89,6 +102,7 @@ public class Hyperspace : MonoBehaviour
             hyperspaceInTimer = settings.GameParameters.ShipHyperspaceInTime;
             collider2D.enabled = false;
             hyperspaceAnimator.SetTrigger("EnterHyperspace");
+            hyperspaceEnterEvent.Raise();
         }
     }
 
@@ -104,5 +118,6 @@ public class Hyperspace : MonoBehaviour
         hyperspaceCooldownTimer = settings.GameParameters.ShipHyperspaceCooldown;
         collider2D.enabled = true;
         hyperspaceAnimator.SetTrigger("ExitHyperspace");
+        hyperspaceExitEvent.Raise();
     }
 }

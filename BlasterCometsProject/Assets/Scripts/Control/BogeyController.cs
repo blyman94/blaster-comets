@@ -23,6 +23,19 @@ public class BogeyController : MonoBehaviour, IController
     [SerializeField] private CameraBounds cameraBounds;
 
     /// <summary>
+    /// Event to raise when a bogey enters.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to raise when a bogey enters.")]
+    [SerializeField] private GameEvent bogeyEnterEvent;
+
+    /// <summary>
+    /// Event to raise when a bogey exits.
+    /// </summary>
+    [Tooltip("Event to raise when a bogey exits.")]
+    [SerializeField] private GameEvent bogeyExitEvent;
+
+    /// <summary>
     /// Transform of the bogey being controlled.
     /// </summary>
     private Transform bogeyTransform;
@@ -120,6 +133,7 @@ public class BogeyController : MonoBehaviour, IController
                 bogeyTransform.position.y >= cameraBounds.MaxYBound ||
                 bogeyTransform.position.y <= cameraBounds.MinYBound)
         {
+            bogeyExitEvent.Raise();
             Retreated?.Invoke();
         }
     }
@@ -148,5 +162,6 @@ public class BogeyController : MonoBehaviour, IController
         relayToControl.StartFire();
         lifeTimer = settings.GameParameters.BogeyLifetime;
         MoveInRandomDirection();
+        bogeyEnterEvent.Raise();
     }
 }

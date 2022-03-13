@@ -17,7 +17,6 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     /// <summary>
     /// Bounds of the main camera.
     /// </summary>
-    [Header("General")]
     [Tooltip("Bounds of the main camera.")]
     [SerializeField] private CameraBounds cameraBounds;
 
@@ -28,6 +27,13 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     [Tooltip("How far from the center of the screen can this meteoroid " +
         "before it's teleported back to the camera boundary?")]
     [SerializeField] private float failsafeThreshold = 20;
+
+    /// <summary>
+    /// Event raised when the meteoroid explodes.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event raised when the meteoroid explodes.")]
+    [SerializeField] private GameEvent explodeEvent;
 
     /// <summary>
     /// SpriteRenderer used to represent the meteoroid.
@@ -133,6 +139,7 @@ public class Meteoroid : MonoBehaviour, IPoolObject
     {
         SpawnExplosionParticleSystem();
         SpawnChildMeteoroids();
+        explodeEvent.Raise();
         activeMeteoroidSet.Remove(gameObject);
         OriginPool.Release(gameObject);
     }

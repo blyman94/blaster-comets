@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9f8b6686ffc2469e168ecd185444e, type: 3}
   m_Name: Standard
   m_EditorClassIdentifier: 
+  PointsPerNewSong: 10000
+  MusicResetTime: 5
   BogeyLargePointsAwarded: 200
   BogeySmallPointsAwarded: 1000
   MeteoroidLargePointsAwarded: 20

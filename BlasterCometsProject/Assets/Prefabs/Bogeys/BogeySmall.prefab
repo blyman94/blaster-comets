@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2646290519160442739, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
+      propertyPath: OnHitResponse.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 5de9ef8671e2d7c47b43aa1aebfefbac, type: 2}
+    - target: {fileID: 2646290519160442739, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
+      propertyPath: OnHitResponse.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646290519160442739, guid: e83034b6bbc39f74aab7e427e5a880ad, type: 3}
       propertyPath: OnHitResponse.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 1000
       objectReference: {fileID: 0}

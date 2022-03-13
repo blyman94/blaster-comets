@@ -52,6 +52,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
+      propertyPath: explodeEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 5de9ef8671e2d7c47b43aa1aebfefbac, type: 2}
+    - target: {fileID: 989486511033135834, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
       propertyPath: maxTravelSpeed
       value: 2.5
       objectReference: {fileID: 0}

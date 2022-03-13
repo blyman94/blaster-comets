@@ -48,6 +48,19 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private ObjectPool projectilePool;
 
     /// <summary>
+    /// Event to raise when a ship is spawned.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to raise when a ship is spawned.")]
+    [SerializeField] private GameEvent spawnNewShipEvent;
+
+    // <summary>
+    /// Event to raise when the game is over.
+    /// </summary>
+    [Tooltip("Event to raise when the game is over.")]
+    [SerializeField] private GameEvent gameOverEvent;
+
+    /// <summary>
     /// Reference to the spawned ship's exploder module.
     /// </summary>
     private Exploder shipExploder;
@@ -145,8 +158,7 @@ public class ShipSpawner : MonoBehaviour
             }
             else
             {
-                // TODO: Trigger formal end game sequence here.
-                Debug.Log("Game Over!");
+                gameOverEvent.Raise();
             }
             respawnTimer = -1;
         }
@@ -161,6 +173,7 @@ public class ShipSpawner : MonoBehaviour
         shipObject.transform.rotation = Quaternion.identity;
         shipExploder.Unexplode();
         shipController.RelayToControl = shipRelay;
+        spawnNewShipEvent.Raise();
     }
 
     /// <summary>

@@ -27,6 +27,13 @@ public class ExtraLifeHandler : MonoBehaviour
     [SerializeField] private IntVariable playerScore;
 
     /// <summary>
+    /// Event to raise when an extra life is gained.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to raise when an extra life is gained.")]
+    [SerializeField] private GameEvent extraLifeEvent;
+
+    /// <summary>
     /// Score the player must reach to get an extra life.
     /// </summary>
     private int targetScore;
@@ -54,6 +61,7 @@ public class ExtraLifeHandler : MonoBehaviour
         if (playerScore.Value >= targetScore)
         {
             playerLives.ApplyChange(1);
+            extraLifeEvent.Raise();
             targetScore += settings.GameParameters.PointsPerExtraLife;
         }
     }

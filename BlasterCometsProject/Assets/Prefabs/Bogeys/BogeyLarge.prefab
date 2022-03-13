@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaab2fbe7a3f1743b7111e999896acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireEvent: {fileID: 11400000, guid: e3d364d60da1dfa42b9e02b8a7a87412, type: 2}
   ProjectileStart: {fileID: 0}
   aimStrategy: {fileID: 11400000, guid: c5d715f89b7c34946ab8792cb381a879, type: 2}
   Radius: 0.35
@@ -233,6 +234,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2743493796051760524}
         m_TargetAssemblyTypeName: Exploder, Assembly-CSharp
         m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 44fae5e449d9bf046b8d755f5e99f9a5, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
