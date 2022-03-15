@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: Watermelon
   m_EditorClassIdentifier: 
+  Name: Watermelon
   BackgroundColor: {r: 0.01514773, g: 0.21698111, b: 0.021098448, a: 1}
-  BogeyExplosionColor: {r: 1, g: 0.101960786, b: 0.03137255, a: 1}
-  MeteoroidExplosionColor: {r: 1, g: 0, b: 0.8117647, a: 1}
-  ShipExplosionColor: {r: 0, g: 1, b: 0.039215688, a: 1}
-  LargeBogeyColor: {r: 1, g: 0.10257213, b: 0.032075405, a: 1}
-  SmallBogeyColor: {r: 1, g: 0.101960786, b: 0.03137255, a: 1}
-  LargeMeteoroidColor: {r: 1, g: 0, b: 0.8125, a: 1}
-  MediumMeteoroidColor: {r: 1, g: 0, b: 0.8125, a: 1}
-  SmallMeteoroidColor: {r: 1, g: 0, b: 0.8125, a: 1}
-  ProjectileBogeyColor: {r: 1, g: 0.101960786, b: 0.03137255, a: 1}
-  ProjectileFriendlyColor: {r: 0, g: 1, b: 0.039215688, a: 1}
+  BogeyExplosionColor: {r: 2, g: 0.20392157, b: 0.0627451, a: 1}
+  MeteoroidExplosionColor: {r: 2, g: 0, b: 1.6235294, a: 1}
+  ShipExplosionColor: {r: 0, g: 2, b: 0.078431375, a: 1}
+  LargeBogeyColor: {r: 2, g: 0.20392157, b: 0.0627451, a: 1}
+  SmallBogeyColor: {r: 2, g: 0.20392157, b: 0.0627451, a: 1}
+  LargeMeteoroidColor: {r: 2, g: 0, b: 1.6235294, a: 1}
+  MediumMeteoroidColor: {r: 2, g: 0, b: 1.6235294, a: 1}
+  SmallMeteoroidColor: {r: 2, g: 0, b: 1.6235294, a: 1}
+  ProjectileBogeyColor: {r: 2, g: 0.20392157, b: 0.0627451, a: 1}
+  ProjectileFriendlyColor: {r: 0, g: 2, b: 0.078431375, a: 1}
   ShipColor: {r: 0, g: 1, b: 0.038595438, a: 1}
-  ThrusterColor: {r: 0, g: 1, b: 0.039215688, a: 1}
+  ThrusterColor: {r: 0, g: 3.9999995, b: 0.16753925, a: 1}
+  HeaderColor: {r: 2, g: 0, b: 1.6235294, a: 1}
+  MenuButtonTextColor: {r: 0, g: 2, b: 0.078431375, a: 1}
+  MenuContentTextColor: {r: 0, g: 2, b: 0.078431375, a: 1}

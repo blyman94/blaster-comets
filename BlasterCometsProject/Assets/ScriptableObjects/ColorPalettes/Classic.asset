@@ -12,13 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: Classic
   m_EditorClassIdentifier: 
+  Name: Classic
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  LargeBogeyColor: {r: 1, g: 1, b: 1, a: 1}
-  SmallBogeyColor: {r: 1, g: 1, b: 1, a: 1}
-  LargeMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
-  MediumMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
-  SmallMeteoroidColor: {r: 1, g: 1, b: 1, a: 1}
-  ProjectileBogeyColor: {r: 1, g: 1, b: 1, a: 1}
-  ProjectileFriendlyColor: {r: 1, g: 1, b: 1, a: 1}
-  ShipColor: {r: 1, g: 1, b: 1, a: 1}
-  ThrusterColor: {r: 1, g: 1, b: 1, a: 1}
+  BogeyExplosionColor: {r: 2, g: 2, b: 2, a: 1}
+  MeteoroidExplosionColor: {r: 2, g: 2, b: 2, a: 1}
+  ShipExplosionColor: {r: 2, g: 2, b: 2, a: 1}
+  LargeBogeyColor: {r: 2, g: 2, b: 2, a: 1}
+  SmallBogeyColor: {r: 2, g: 2, b: 2, a: 1}
+  LargeMeteoroidColor: {r: 2, g: 2, b: 2, a: 1}
+  MediumMeteoroidColor: {r: 2, g: 2, b: 2, a: 1}
+  SmallMeteoroidColor: {r: 2, g: 2, b: 2, a: 1}
+  ProjectileBogeyColor: {r: 2, g: 2, b: 2, a: 1}
+  ProjectileFriendlyColor: {r: 2, g: 2, b: 2, a: 1}
+  ShipColor: {r: 2, g: 2, b: 2, a: 1}
+  ThrusterColor: {r: 2, g: 2, b: 2, a: 1}
+  HeaderColor: {r: 3.9999995, g: 3.9999995, b: 3.9999995, a: 1}
+  MenuButtonTextColor: {r: 3.9999995, g: 3.9999995, b: 3.9999995, a: 1}
+  MenuContentTextColor: {r: 7.999999, g: 7.999999, b: 7.999999, a: 1}

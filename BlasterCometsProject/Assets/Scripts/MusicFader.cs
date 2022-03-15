@@ -80,9 +80,9 @@ public class MusicFader : MonoBehaviour
     /// </summary>
     private void FadeInOriginalSource()
     {
+        fadeOutTimer -= Time.deltaTime;
         if (fadeOutTimer > 0)
         {
-            fadeOutTimer -= Time.deltaTime;
             elapsedTime += Time.deltaTime;
             float test = 1 - 
                 (elapsedTime / settings.GameParameters.MusicResetTime);

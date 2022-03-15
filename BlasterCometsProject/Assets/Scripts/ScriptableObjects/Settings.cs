@@ -14,6 +14,12 @@ public class Settings : ScriptableObject
     public GameParameters GameParameters;
 
     /// <summary>
+    /// Current color palette of the game.
+    /// </summary>
+    [Tooltip("Current color palette of the game.")]
+    public ColorPalette CurrentColorPalette;
+
+    /// <summary>
     /// Naive Restart Implementation.
     /// </summary>
     public void RestartGame()

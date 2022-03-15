@@ -58,7 +58,8 @@ public class ExtraLifeHandler : MonoBehaviour
     /// </summary>
     private void UpdatePlayerLives()
     {
-        if (playerScore.Value >= targetScore)
+        if (playerScore.Value >= targetScore &&
+            playerLives.Value < settings.GameParameters.ShipMaxLivesCount)
         {
             playerLives.ApplyChange(1);
             extraLifeEvent.Raise();

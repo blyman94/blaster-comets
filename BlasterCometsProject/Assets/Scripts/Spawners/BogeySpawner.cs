@@ -4,7 +4,7 @@ using UnityEngine;
 /// Spawns bogeys with AI to actively attack the player.
 /// </summary>
 public class BogeySpawner : MonoBehaviour
-{   
+{
     /// <summary>
     /// Delegate to signal that this spawner's bogey has been destroyed.
     /// </summary>
@@ -101,6 +101,14 @@ public class BogeySpawner : MonoBehaviour
         }
     }
     #endregion
+
+    /// <summary>
+    /// Deactivates the bogey. Useful for game loop restarts.
+    /// </summary>
+    public void ResetBogey()
+    {
+        bogeyObject.SetActive(false);
+    }
 
     /// <summary>
     /// Spawns a bogey.

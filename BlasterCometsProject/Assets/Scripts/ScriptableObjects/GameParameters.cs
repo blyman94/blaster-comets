@@ -283,9 +283,15 @@ public class GameParameters : ScriptableObject
     public float ShipThrustForce = 500;
 
     /// <summary>
-    /// How long it takes for the ship to respawn.
+    /// Maximum amount of lives the ship can have.
     /// </summary>
     [Header("Spawning")]
+    [Tooltip("Maximum amount of lives the ship can have.")]
+    public int ShipMaxLivesCount = 9;
+
+    /// <summary>
+    /// How long it takes for the ship to respawn.
+    /// </summary>
     [Tooltip("How long it takes for the ship to respawn.")]
     public float ShipRespawnTime = 3f;
 

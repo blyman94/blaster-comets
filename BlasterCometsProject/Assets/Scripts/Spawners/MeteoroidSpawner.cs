@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -85,7 +86,7 @@ public class MeteoroidSpawner : MonoBehaviour
     {
         if (activeMeteoroidSet != null)
         {
-            activeMeteoroidSet.Clear();
+            activeMeteoroidSet.Initialize();
         }
         SpawnLargeMeteoroids();
     }
@@ -112,15 +113,21 @@ public class MeteoroidSpawner : MonoBehaviour
     /// meteoroids into large meteoroids. Spawns large meteoroids randomly on
     /// the screen.
     /// </summary>
-    private void SpawnLargeMeteoroids()
+    public void SpawnLargeMeteoroids()
     {
+        if (activeMeteoroidSet.Count() > 0)
+        {
+            ReleaseAllActiveMeteoroids();
+            activeMeteoroidSet.Clear();
+        }
+
         int largeMeteoroidCount = LargeMeteoroidCount();
         for (int i = 0; i < largeMeteoroidCount; i++)
         {
             GameObject largeMeteoroidObject = MeteoroidLargePool.Get();
             largeMeteoroidObject.transform.SetParent(null);
 
-            CombatTarget largeMeteoroidCombatTarget = 
+            CombatTarget largeMeteoroidCombatTarget =
                 largeMeteoroidObject.GetComponent<CombatTarget>();
             largeMeteoroidCombatTarget.PointValue =
                 settings.GameParameters.MeteoroidLargePointsAwarded;
@@ -177,7 +184,7 @@ public class MeteoroidSpawner : MonoBehaviour
                 largeMeteoroid.ChildMeteoroidObjects.Add(mediumMeteoroidObject);
             }
 
-            largeMeteoroidObject.transform.position = 
+            largeMeteoroidObject.transform.position =
                 cameraBounds.GetRandomPositionOn();
             largeMeteoroidObject.SetActive(true);
         }
@@ -197,6 +204,21 @@ public class MeteoroidSpawner : MonoBehaviour
             settings.GameParameters.MeteoroidLevelStartCountRange.x) *
             playerScoreRatio) +
             settings.GameParameters.MeteoroidLevelStartCountRange.x;
-        return (Mathf.FloorToInt(rawCount));
+        int finalCount = Mathf.FloorToInt(rawCount);
+
+        return (Mathf.Min(finalCount,
+            (int)settings.GameParameters.MeteoroidLevelStartCountRange.y));
+    }
+
+    /// <summary>
+    /// Releases all active meteoroids to their origin pools.
+    /// </summary>
+    private void ReleaseAllActiveMeteoroids()
+    {
+        foreach (GameObject meteoroidObject in activeMeteoroidSet.Items)
+        {
+            Meteoroid meteoroid = meteoroidObject.GetComponent<Meteoroid>();
+            meteoroid.OriginPool.Release(meteoroidObject);
+        }
     }
 }

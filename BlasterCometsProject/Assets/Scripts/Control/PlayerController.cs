@@ -6,7 +6,13 @@ using UnityEngine.InputSystem;
 /// from the Input System package.
 /// </summary>
 public class PlayerController : MonoBehaviour, IController
-{
+{   
+    /// <summary>
+    /// Allows the player to pause the game.
+    /// </summary>
+    [Tooltip("Allows the player to pause the game.")]
+    [SerializeField] private GamePauser gamePauser;
+
     #region IController Methods
     /// <summary>
     /// CommandRelay of the GameObject to be controlled.
@@ -48,6 +54,19 @@ public class PlayerController : MonoBehaviour, IController
             {
                 RelayToControl.EnterHyperspace();
             }
+        }
+    }
+
+    /// <summary>
+    /// Pauses and unpauses the game.
+    /// </summary>
+    /// <param name="context">Callback context of the controlling input 
+    /// action.</param>
+    public void OnPauseAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            gamePauser.ToggleGamePause();
         }
     }
 

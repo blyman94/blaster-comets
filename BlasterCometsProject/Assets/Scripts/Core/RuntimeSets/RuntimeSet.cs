@@ -16,7 +16,20 @@ public class RuntimeSet : ScriptableObject
     /// <summary>
     /// List containing items added to the runtime set.
     /// </summary>
-    private List<GameObject> items = new List<GameObject>();
+    private List<GameObject> items;
+
+    #region Properties
+    /// <summary>
+    /// List containing items added to the runtime set.
+    /// </summary>
+    public List<GameObject> Items
+    {
+        get
+        {
+            return items;
+        }
+    }
+    #endregion
 
     /// <summary>
     /// Adds an item to the runtime set.
@@ -65,6 +78,14 @@ public class RuntimeSet : ScriptableObject
     public int Count()
     {
         return items.Count;
+    }
+
+    /// <summary>
+    /// Initializes the list that stores runtime set references.
+    /// </summary>
+    public void Initialize()
+    {
+        items = new List<GameObject>();
     }
 
     /// <summary>

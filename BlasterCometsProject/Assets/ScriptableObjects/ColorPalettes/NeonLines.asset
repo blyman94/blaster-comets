@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63522dcf915cb542ab6d95fd1ac23f4, type: 3}
   m_Name: NeonLines
   m_EditorClassIdentifier: 
+  Name: NeonLines
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  BogeyExplosionColor: {r: 1, g: 0.9529412, b: 0, a: 1}
-  MeteoroidExplosionColor: {r: 1, g: 0, b: 0.88235295, a: 1}
-  ShipExplosionColor: {r: 0, g: 0.91764706, b: 1, a: 1}
-  LargeBogeyColor: {r: 1, g: 0.9529412, b: 0, a: 1}
-  SmallBogeyColor: {r: 1, g: 0.9529412, b: 0, a: 1}
-  LargeMeteoroidColor: {r: 1, g: 0, b: 0.88235295, a: 1}
-  MediumMeteoroidColor: {r: 1, g: 0, b: 0.88235295, a: 1}
-  SmallMeteoroidColor: {r: 1, g: 0, b: 0.88235295, a: 1}
-  ProjectileBogeyColor: {r: 1, g: 0.9529412, b: 0, a: 1}
-  ProjectileFriendlyColor: {r: 0, g: 0.91865754, b: 1, a: 1}
-  ShipColor: {r: 0, g: 0.91764706, b: 1, a: 1}
-  ThrusterColor: {r: 0, g: 0.91764706, b: 1, a: 1}
+  BogeyExplosionColor: {r: 2, g: 1.9058824, b: 0, a: 1}
+  MeteoroidExplosionColor: {r: 2, g: 0, b: 1.7647059, a: 1}
+  ShipExplosionColor: {r: 0, g: 1.8352941, b: 2, a: 1}
+  LargeBogeyColor: {r: 2, g: 1.9058824, b: 0, a: 1}
+  SmallBogeyColor: {r: 2, g: 1.9058824, b: 0, a: 1}
+  LargeMeteoroidColor: {r: 2, g: 0, b: 1.7647059, a: 1}
+  MediumMeteoroidColor: {r: 2, g: 0, b: 1.7647059, a: 1}
+  SmallMeteoroidColor: {r: 2, g: 0, b: 1.7647059, a: 1}
+  ProjectileBogeyColor: {r: 2, g: 1.9058824, b: 0, a: 1}
+  ProjectileFriendlyColor: {r: 0, g: 1.8352941, b: 2, a: 1}
+  ShipColor: {r: 0, g: 1.8352941, b: 2, a: 1}
+  ThrusterColor: {r: 0, g: 1.8352941, b: 2, a: 1}
+  HeaderColor: {r: 3.9999995, g: 3.8324604, b: 0, a: 1}
+  MenuButtonTextColor: {r: 0, g: 3.6858635, b: 3.9999995, a: 1}
+  MenuContentTextColor: {r: 3.9999995, g: 0, b: 3.5392666, a: 1}

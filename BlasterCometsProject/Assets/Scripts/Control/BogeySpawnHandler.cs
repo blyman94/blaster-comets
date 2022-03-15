@@ -154,6 +154,8 @@ public class BogeySpawnHandler : MonoBehaviour
         if (playerScore.Value < 
             settings.GameParameters.BogeyLargeSpawnThreshold)
         {
+            canSpawnLargeBogeys = false;
+            canSpawnSmallBogeys = false;
             return;
         }
         else if (!canSpawnLargeBogeys &&

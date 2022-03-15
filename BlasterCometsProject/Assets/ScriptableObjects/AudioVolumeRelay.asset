@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2d48b8154ef7348ba124025e4b98ba, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: 93528f3cb2865cf4c9a69d86de8af483, type: 3}
+  m_Name: AudioVolumeRelay
   m_EditorClassIdentifier: 
-  GameParameters: {fileID: 11400000, guid: 23c003efe0aa6f343819c92a7f39a32c, type: 2}
-  CurrentColorPalette: {fileID: 11400000, guid: 4941c77db88b84841b573bd56ed419b2, type: 2}
+  mainAudioMixer: {fileID: 24100000, guid: 0305638a15ef73945bb1caeb515ba345, type: 2}
