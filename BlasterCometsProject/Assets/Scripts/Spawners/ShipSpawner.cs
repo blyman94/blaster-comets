@@ -13,15 +13,9 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private Settings settings;
 
     /// <summary>
-    /// Event to signal the game has ended.
-    /// </summary>
-    [Header("General")]
-    [Tooltip("Event to signal the game has ended.")]
-    [SerializeField] private GameEvent GameOverEvent;
-
-    /// <summary>
     /// IntVariable representing the number of lives the player has remaining.
     /// </summary>
+    [Header("General")]
     [Tooltip("IntVariable representing the number of lives the player has " +
         "remaining.")]
     [SerializeField] private IntVariable playerLives;
@@ -38,6 +32,19 @@ public class ShipSpawner : MonoBehaviour
     /// </summary>
     [Tooltip("Prefab representing the ship (player).")]
     [SerializeField] private GameObject shipPrefab;
+
+    /// <summary>
+    /// Event to signal the game has ended.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event to signal the game has ended.")]
+    [SerializeField] private GameEvent GameOverEvent;
+
+    /// <summary>
+    /// Event to signal the ship has spawned.
+    /// </summary>
+    [Tooltip("Event to signal the ship has spawned.")]
+    [SerializeField] private GameEvent ShipSpawnedEvent;
 
     /// <summary>
     /// Pool from which destroyed ship's explosions will be spawned from.
@@ -154,6 +161,7 @@ public class ShipSpawner : MonoBehaviour
         shipObject.transform.position = Vector3.zero;
         shipObject.transform.rotation = Quaternion.identity;
         shipRelay.Exploder.Unexplode();
+        ShipSpawnedEvent.Raise();
         shipController.RelayToControl = shipRelay;
     }
 

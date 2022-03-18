@@ -19,13 +19,13 @@ MonoBehaviour:
   MeteoroidLargePointsAwarded: 20
   MeteoroidMediumPointsAwarded: 50
   MeteoroidSmallPointsAwarded: 100
-  BogeyFireAngleStart: 120
+  BogeyFireAngleStart: 100
   BogeyFireAngleMinimum: 10
   BogeyFireAngleMinimumScore: 70000
   BogeyFireRate: 1
   BogeyProjectileLifeTime: 1.125
   BogeyProjectileTravelSpeed: 8
-  BogeyMoveSpeed: 1
+  BogeyMoveSpeed: 1.75
   BogeyMoveTimeRange: {x: 5, y: 7}
   BogeyLargeSpawnThreshold: 2000
   BogeyLifetime: 12
@@ -34,20 +34,20 @@ MonoBehaviour:
   BogeySpawnDelayRange: {x: 5, y: 10}
   MeteoroidMaxSpawnScore: 10000
   TimeBetweenLevels: 3
-  MeteoroidLevelStartCountRange: {x: 4, y: 11}
+  MeteoroidLevelStartCountRange: {x: 4, y: 13}
   MeteoroidMediumCount: 2
   MeteoroidSmallCount: 2
-  MeteoroidTravelSpeedRange: {x: 0.5, y: 1.5}
+  MeteoroidTravelSpeedRange: {x: 0.75, y: 2}
   MeteoroidTravelSpeedMultiplier: 1.5
   PointsPerExtraLife: 10000
   ShipFireCooldown: 0.2
   ShipHyperspaceCooldown: 1
   ShipHyperspaceInTime: 1
-  ShipProjectileLifeTime: 0.8
+  ShipProjectileLifeTime: 1
   ShipProjectileTravelSpeed: 15
   ShipDrag: 0.45
-  ShipMaxSpeed: 15
+  ShipMaxSpeed: 13
   ShipRotationSpeed: 150
   ShipThrustForce: 850
+  ShipMaxLivesCount: 9
   ShipRespawnTime: 3
-  ShipStartingLives: 3
