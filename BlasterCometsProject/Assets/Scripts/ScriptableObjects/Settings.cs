@@ -26,4 +26,12 @@ public class Settings : ScriptableObject
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    /// <summary>
+    /// Quits the game.
+    /// </summary>
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

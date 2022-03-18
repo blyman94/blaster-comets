@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21def6efc980bfa4aafca051ff5eed1d, type: 3}
+  m_Name: LocalHighScores
+  m_EditorClassIdentifier: 
+  HighScores:
+  - Name: GW
+    Value: 25000
+  - Name: JA
+    Value: 22500
+  - Name: TJ
+    Value: 20000
+  - Name: JM
+    Value: 17500
+  - Name: JM
+    Value: 15000
+  - Name: JQA
+    Value: 12500
+  - Name: AJ
+    Value: 10000
+  - Name: MVB
+    Value: 7500
+  - Name: WHH
+    Value: 5000
+  - Name: JT
+    Value: 2500
