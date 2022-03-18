@@ -84,19 +84,21 @@ public class MusicFader : MonoBehaviour
         if (fadeOutTimer > 0)
         {
             elapsedTime += Time.deltaTime;
-            float test = 1 - 
+            float targetAdditionalAudioSourceVolume = 1 - 
                 (elapsedTime / settings.GameParameters.MusicResetTime);
             for (int i = 1; i < audioSources.Count; i++)
             {
-                if (audioSources[i].volume >= test)
+                if (audioSources[i].volume >= targetAdditionalAudioSourceVolume)
                 {
                     audioSources[i].volume = Mathf.Lerp(1, 0, 
                         elapsedTime / settings.GameParameters.MusicResetTime);
                 }
             }
 
-            float test2 = elapsedTime / settings.GameParameters.MusicResetTime;
-            if (audioSources[0].volume <= test2)
+            // Target volume for base
+            float targetBaseAudioSourceVolume = 
+                elapsedTime / settings.GameParameters.MusicResetTime;
+            if (audioSources[0].volume <= targetBaseAudioSourceVolume)
             {
                 audioSources[0].volume = Mathf.Lerp(0, 1, 
                     elapsedTime / settings.GameParameters.MusicResetTime);

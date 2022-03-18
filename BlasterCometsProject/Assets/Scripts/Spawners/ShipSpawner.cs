@@ -54,11 +54,6 @@ public class ShipSpawner : MonoBehaviour
     [SerializeField] private ObjectPool projectilePool;
 
     /// <summary>
-    /// Reference to the spawned ship's exploder module.
-    /// </summary>
-    private Exploder shipExploder;
-
-    /// <summary>
     /// Reference to the spawned ship.
     /// </summary>
     private GameObject shipObject;
@@ -66,7 +61,7 @@ public class ShipSpawner : MonoBehaviour
     /// <summary>
     /// CommandRelay component of the ship being spawned.
     /// </summary>
-    private CommandRelay shipRelay;
+    private ShipCommandRelay shipRelay;
 
     /// <summary>
     /// Timer to track how long before ship respawns.
@@ -77,13 +72,13 @@ public class ShipSpawner : MonoBehaviour
     private void Awake()
     {
         shipObject = Instantiate(shipPrefab, Vector3.zero, Quaternion.identity);
+        shipRelay = shipObject.GetComponent<ShipCommandRelay>();
         ConfigureShip();
-        ConfigureShipExploder();
         shipObject.SetActive(false);
     }
     private void OnEnable()
     {
-        shipExploder.EntityExploded += StartRespawnTimer;
+        shipRelay.Exploder.EntityExploded += StartRespawnTimer;
     }
     private void Update()
     {
@@ -91,42 +86,32 @@ public class ShipSpawner : MonoBehaviour
     }
     private void OnDisable()
     {
-        shipExploder.EntityExploded -= StartRespawnTimer;
+        shipRelay.Exploder.EntityExploded -= StartRespawnTimer;
     }
     #endregion
+
+    public void DespawnShip()
+    {
+        shipObject.SetActive(false);
+    }
 
     /// <summary>
     /// Assigns the ship's CommandRelay to the ship controller.
     /// </summary>
     private void ConfigureShip()
     {
-        if (shipRelay == null)
-        {
-            shipRelay = shipObject.GetComponent<CommandRelay>();
-        }
+        shipRelay.Exploder.ExplosionPool = explosionPool;
+        shipRelay.Exploder.EntityController = shipController;
 
-        if (shipRelay != null)
-        {
-            shipRelay.Rigidbody2D.drag = settings.GameParameters.ShipDrag;
+        shipRelay.Rigidbody2D.drag = settings.GameParameters.ShipDrag;
 
-            shipRelay.Weapon.Cooldown =
-                settings.GameParameters.ShipFireCooldown;
-            shipRelay.Weapon.ProjectilePool = projectilePool;
-            shipRelay.Weapon.ProjectileLifetime =
-                settings.GameParameters.ShipProjectileLifeTime;
-            shipRelay.Weapon.ProjectileTravelSpeed =
-                settings.GameParameters.ShipProjectileTravelSpeed;
-        }
-    }
-
-    /// <summary>
-    /// Configures the exploder module of the spawned ship.
-    /// </summary>
-    private void ConfigureShipExploder()
-    {
-        shipExploder = shipObject.GetComponent<Exploder>();
-        shipExploder.ExplosionPool = explosionPool;
-        shipExploder.EntityController = shipController;
+        shipRelay.Weapon.Cooldown =
+            settings.GameParameters.ShipFireCooldown;
+        shipRelay.Weapon.ProjectilePool = projectilePool;
+        shipRelay.Weapon.ProjectileLifetime =
+            settings.GameParameters.ShipProjectileLifeTime;
+        shipRelay.Weapon.ProjectileTravelSpeed =
+            settings.GameParameters.ShipProjectileTravelSpeed;
     }
 
     /// <summary>
@@ -151,10 +136,7 @@ public class ShipSpawner : MonoBehaviour
             }
             else
             {
-                if (GameOverEvent != null)
-                {
-                    GameOverEvent.Raise();
-                }
+                GameOverEvent.Raise();
             }
             respawnTimer = -1;
         }
@@ -171,7 +153,7 @@ public class ShipSpawner : MonoBehaviour
         }
         shipObject.transform.position = Vector3.zero;
         shipObject.transform.rotation = Quaternion.identity;
-        shipExploder.Unexplode();
+        shipRelay.Exploder.Unexplode();
         shipController.RelayToControl = shipRelay;
     }
 

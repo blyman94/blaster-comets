@@ -22,17 +22,11 @@ public class PlayerScoreDisplay : MonoBehaviour
     #region MonoBehaviour Methods
     private void OnEnable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated += UpdateDisplay;
-        }
+        playerScore.Updated += UpdateDisplay;
     }
     private void OnDisable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated -= UpdateDisplay;
-        }
+        playerScore.Updated -= UpdateDisplay;
     }
     #endregion
 

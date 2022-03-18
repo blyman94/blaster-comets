@@ -26,10 +26,7 @@ public class MenuButton : MonoBehaviour
     #region MonoBehaviour Methods
     private void Start()
     {
-        if (carotLeft != null)
-        {
-            carotColor = carotLeft.color;
-        }
+        carotColor = carotLeft.color;
         HideCarots();
     }
     #endregion

@@ -50,16 +50,6 @@ public class BogeySpawner : MonoBehaviour
     [SerializeField] private ObjectPool projectilePool;
 
     /// <summary>
-    /// Combat Target for the bogey object.
-    /// </summary>
-    private CombatTarget bogeyCombatTarget;
-
-    /// <summary>
-    /// Exploder module for the bogey object.
-    /// </summary>
-    private Exploder bogeyExploder;
-
-    /// <summary>
     /// GameObject representing the instance of the bogey.
     /// </summary>
     private GameObject bogeyObject;
@@ -72,33 +62,19 @@ public class BogeySpawner : MonoBehaviour
     #region MonoBehaviour Methods
     private void Awake()
     {
-        bogeyObject = Instantiate(bogeyPrefab, Vector3.zero,
-                    Quaternion.identity);
+        bogeyObject = Instantiate(bogeyPrefab, Vector3.zero, 
+            Quaternion.identity);
         bogeyObject.SetActive(false);
 
-        bogeyExploder = bogeyObject.GetComponent<Exploder>();
-        bogeyExploder.ExplosionPool = explosionPool;
-
-        bogeyCombatTarget = bogeyObject.GetComponent<CombatTarget>();
-        bogeyCombatTarget.PointValue = isLargeBogey ?
-            settings.GameParameters.BogeyLargePointsAwarded :
-            settings.GameParameters.BogeySmallPointsAwarded;
-
-        ConfigureBogeyRelay();
+        ConfigureBogeyRelay();        
     }
     private void OnEnable()
     {
-        if (bogeyExploder != null)
-        {
-            bogeyExploder.EntityExploded += OnBogeyExplode;
-        }
+        bogeyRelay.Exploder.EntityExploded += OnBogeyExplode;
     }
     private void OnDisable()
     {
-        if (bogeyExploder != null)
-        {
-            bogeyExploder.EntityExploded += OnBogeyExplode;
-        }
+        bogeyRelay.Exploder.EntityExploded += OnBogeyExplode;
     }
     #endregion
 
@@ -118,7 +94,7 @@ public class BogeySpawner : MonoBehaviour
         bogeyObject.transform.position =
                 cameraBounds.GetRandomPositionOn();
         bogeyObject.SetActive(true);
-        bogeyExploder.Unexplode();
+        bogeyRelay.Exploder.Unexplode();
         return bogeyRelay;
     }
 
@@ -137,15 +113,18 @@ public class BogeySpawner : MonoBehaviour
     {
         bogeyRelay = bogeyObject.GetComponent<CommandRelay>();
 
-        if (bogeyRelay != null)
-        {
-            bogeyRelay.Weapon.Cooldown =
-                settings.GameParameters.BogeyFireRate;
-            bogeyRelay.Weapon.ProjectilePool = projectilePool;
-            bogeyRelay.Weapon.ProjectileLifetime =
-                settings.GameParameters.BogeyProjectileLifeTime;
-            bogeyRelay.Weapon.ProjectileTravelSpeed =
-                settings.GameParameters.BogeyProjectileTravelSpeed;
-        }
+        bogeyRelay.Exploder.ExplosionPool = explosionPool;
+
+        bogeyRelay.CombatTarget.PointValue = isLargeBogey ?
+            settings.GameParameters.BogeyLargePointsAwarded :
+            settings.GameParameters.BogeySmallPointsAwarded;
+
+        bogeyRelay.Weapon.Cooldown =
+            settings.GameParameters.BogeyFireRate;
+        bogeyRelay.Weapon.ProjectilePool = projectilePool;
+        bogeyRelay.Weapon.ProjectileLifetime =
+            settings.GameParameters.BogeyProjectileLifeTime;
+        bogeyRelay.Weapon.ProjectileTravelSpeed =
+            settings.GameParameters.BogeyProjectileTravelSpeed;
     }
 }

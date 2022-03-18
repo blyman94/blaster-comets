@@ -219,20 +219,15 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyBogeyColors()
     {
-        if (largeBogeyMaterial != null)
-        {
-            largeBogeyMaterial.SetColor("_BaseColor",
-                ColorPalette.LargeBogeyColor);
-            largeBogeyMaterial.SetColor("_EmissionColor",
-                ColorPalette.LargeBogeyColor);
-        }
-        if (smallBogeyMaterial != null)
-        {
-            smallBogeyMaterial.SetColor("_BaseColor",
-                ColorPalette.LargeBogeyColor);
-            smallBogeyMaterial.SetColor("_EmissionColor",
-                ColorPalette.LargeBogeyColor);
-        }
+        largeBogeyMaterial.SetColor("_BaseColor",
+            ColorPalette.LargeBogeyColor);
+        largeBogeyMaterial.SetColor("_EmissionColor",
+            ColorPalette.LargeBogeyColor);
+            
+        smallBogeyMaterial.SetColor("_BaseColor",
+            ColorPalette.LargeBogeyColor);
+        smallBogeyMaterial.SetColor("_EmissionColor",
+            ColorPalette.LargeBogeyColor);
     }
 
     /// <summary>
@@ -240,10 +235,7 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyCameraBackgroundColor()
     {
-        if (mainCamera != null)
-        {
-            mainCamera.backgroundColor = ColorPalette.BackgroundColor;
-        }
+        mainCamera.backgroundColor = ColorPalette.BackgroundColor;
 
         foreach (Image background in menuBackgrounds)
         {
@@ -256,29 +248,20 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyExplosionColors()
     {
-        if (bogeyExplosionMaterial != null)
-        {
-            bogeyExplosionMaterial.SetColor("_BaseColor",
-                ColorPalette.BogeyExplosionColor);
-            bogeyExplosionMaterial.SetColor("_EmissionColor",
-                ColorPalette.BogeyExplosionColor);
-        }
+        bogeyExplosionMaterial.SetColor("_BaseColor",
+            ColorPalette.BogeyExplosionColor);
+        bogeyExplosionMaterial.SetColor("_EmissionColor",
+            ColorPalette.BogeyExplosionColor);
 
-        if (meteoroidExplosionMaterial != null)
-        {
-            meteoroidExplosionMaterial.SetColor("_BaseColor",
-                ColorPalette.MeteoroidExplosionColor);
-            meteoroidExplosionMaterial.SetColor("_EmissionColor",
-                ColorPalette.MeteoroidExplosionColor);
-        }
+        meteoroidExplosionMaterial.SetColor("_BaseColor",
+            ColorPalette.MeteoroidExplosionColor);
+        meteoroidExplosionMaterial.SetColor("_EmissionColor",
+            ColorPalette.MeteoroidExplosionColor);
 
-        if (shipExplosionMaterial != null)
-        {
-            shipExplosionMaterial.SetColor("_BaseColor",
-                ColorPalette.ShipExplosionColor);
-            shipExplosionMaterial.SetColor("_EmissionColor",
-                ColorPalette.ShipExplosionColor);
-        }
+        shipExplosionMaterial.SetColor("_BaseColor",
+            ColorPalette.ShipExplosionColor);
+        shipExplosionMaterial.SetColor("_EmissionColor",
+            ColorPalette.ShipExplosionColor);
     }
 
     /// <summary>
@@ -286,27 +269,20 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyMeteoroidColors()
     {
-        if (largeMeteoroidMaterial != null)
-        {
-            largeMeteoroidMaterial.SetColor("_BaseColor",
-                ColorPalette.LargeMeteoroidColor);
-            largeMeteoroidMaterial.SetColor("_EmissionColor",
-                ColorPalette.LargeMeteoroidColor);
-        }
-        if (mediumMeteoroidMaterial != null)
-        {
-            mediumMeteoroidMaterial.SetColor("_BaseColor",
-                ColorPalette.MediumMeteoroidColor);
-            mediumMeteoroidMaterial.SetColor("_EmissionColor",
-                ColorPalette.MediumMeteoroidColor);
-        }
-        if (smallMeteoroidMaterial != null)
-        {
-            smallMeteoroidMaterial.SetColor("_BaseColor",
-                ColorPalette.SmallMeteoroidColor);
-            smallMeteoroidMaterial.SetColor("_EmissionColor",
-                ColorPalette.SmallMeteoroidColor);
-        }
+        largeMeteoroidMaterial.SetColor("_BaseColor",
+            ColorPalette.LargeMeteoroidColor);
+        largeMeteoroidMaterial.SetColor("_EmissionColor",
+            ColorPalette.LargeMeteoroidColor);
+
+        mediumMeteoroidMaterial.SetColor("_BaseColor",
+            ColorPalette.MediumMeteoroidColor);
+        mediumMeteoroidMaterial.SetColor("_EmissionColor",
+            ColorPalette.MediumMeteoroidColor);
+
+        smallMeteoroidMaterial.SetColor("_BaseColor",
+            ColorPalette.SmallMeteoroidColor);
+        smallMeteoroidMaterial.SetColor("_EmissionColor",
+            ColorPalette.SmallMeteoroidColor);
     }
 
     /// <summary>
@@ -314,21 +290,15 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyProjectileColors()
     {
-        if (projectileBogeyMaterial != null)
-        {
-            projectileBogeyMaterial.SetColor("_BaseColor",
-                ColorPalette.ProjectileBogeyColor);
-            projectileBogeyMaterial.SetColor("_EmissionColor",
-                ColorPalette.ProjectileBogeyColor);
-        }
+        projectileBogeyMaterial.SetColor("_BaseColor",
+            ColorPalette.ProjectileBogeyColor);
+        projectileBogeyMaterial.SetColor("_EmissionColor",
+            ColorPalette.ProjectileBogeyColor);
 
-        if (projectileFriendlyMaterial != null)
-        {
-            projectileFriendlyMaterial.SetColor("_BaseColor",
-                ColorPalette.ProjectileFriendlyColor);
-            projectileFriendlyMaterial.SetColor("_EmissionColor",
-                ColorPalette.ProjectileFriendlyColor);
-        }
+        projectileFriendlyMaterial.SetColor("_BaseColor",
+            ColorPalette.ProjectileFriendlyColor);
+        projectileFriendlyMaterial.SetColor("_EmissionColor",
+            ColorPalette.ProjectileFriendlyColor);
     }
 
     /// <summary>
@@ -336,18 +306,13 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyShipColors()
     {
-        if (shipMaterial != null)
-        {
-            shipMaterial.SetColor("_BaseColor", ColorPalette.ShipColor);
-            shipMaterial.SetColor("_EmissionColor", ColorPalette.ShipColor);
-        }
-        if (thrusterMaterial != null)
-        {
-            thrusterMaterial.SetColor("_BaseColor",
-                ColorPalette.ThrusterColor);
-            thrusterMaterial.SetColor("_EmissionColor",
-                ColorPalette.ThrusterColor);
-        }
+        shipMaterial.SetColor("_BaseColor", ColorPalette.ShipColor);
+        shipMaterial.SetColor("_EmissionColor", ColorPalette.ShipColor);
+
+        thrusterMaterial.SetColor("_BaseColor",
+            ColorPalette.ThrusterColor);
+        thrusterMaterial.SetColor("_EmissionColor",
+            ColorPalette.ThrusterColor);
     }
 
     /// <summary>
@@ -355,24 +320,14 @@ public class ColorApplicator : MonoBehaviour
     /// </summary>
     private void ApplyUIColors()
     {
-        if (headerMaterial != null)
-        {
-            headerMaterial.SetColor("_FaceColor", ColorPalette.HeaderColor);
-        }
-        if (menuButtonTextMaterial != null)
-        {
-            menuButtonTextMaterial.SetColor("_FaceColor", ColorPalette.MenuButtonTextColor);
-        }
-        if (menuContentTextMaterial != null)
-        {
-            menuContentTextMaterial.SetColor("_FaceColor", ColorPalette.MenuContentTextColor);
-        }
-        if (shipUIMaterial != null)
-        {
-            shipUIMaterial.SetColor("_BaseColor",
-                ColorPalette.ShipColor);
-            shipUIMaterial.SetColor("_EmissionColor",
-                ColorPalette.ShipColor);
-        }
+        headerMaterial.SetColor("_FaceColor", ColorPalette.HeaderColor);
+
+        menuButtonTextMaterial.SetColor("_FaceColor", 
+            ColorPalette.MenuButtonTextColor);
+        menuContentTextMaterial.SetColor("_FaceColor", 
+            ColorPalette.MenuContentTextColor);
+        
+        shipUIMaterial.SetColor("_BaseColor", ColorPalette.ShipColor);
+        shipUIMaterial.SetColor("_EmissionColor", ColorPalette.ShipColor);
     }
 }

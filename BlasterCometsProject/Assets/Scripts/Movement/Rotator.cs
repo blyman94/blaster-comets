@@ -34,21 +34,18 @@ public class Rotator : MonoBehaviour
     #region MonoBehaviour Methods
     private void FixedUpdate()
     {
-        if (rigidbody2D != null)
+        if (RotateLeft)
         {
-            if (RotateLeft)
-            {
-                rigidbody2D.rotation += 
-                    settings.GameParameters.ShipRotationSpeed * 
-                    Time.fixedDeltaTime;
-            }
-            
-            if (RotateRight)
-            {
-                rigidbody2D.rotation -= 
-                    settings.GameParameters.ShipRotationSpeed *
-                    Time.fixedDeltaTime;
-            }
+            rigidbody2D.rotation +=
+                settings.GameParameters.ShipRotationSpeed *
+                Time.fixedDeltaTime;
+        }
+
+        if (RotateRight)
+        {
+            rigidbody2D.rotation -=
+                settings.GameParameters.ShipRotationSpeed *
+                Time.fixedDeltaTime;
         }
     }
     #endregion

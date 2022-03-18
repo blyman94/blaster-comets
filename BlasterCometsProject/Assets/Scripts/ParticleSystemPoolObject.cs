@@ -18,11 +18,8 @@ public class ParticleSystemPoolObject : MonoBehaviour, IPoolObject
     #region MonoBehaviour Methods
     private void Start()
     {
-        if (targetSystem != null)
-        {
-            ParticleSystem.MainModule main = targetSystem.main;
-            main.stopAction = ParticleSystemStopAction.Callback;
-        }
+        ParticleSystem.MainModule main = targetSystem.main;
+        main.stopAction = ParticleSystemStopAction.Callback;
     }
     #endregion
 

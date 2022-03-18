@@ -34,28 +34,22 @@ public class FireAngleAdjuster : MonoBehaviour
     /// When targeting the ship, the initial angle of the cone the bogey fires 
     /// in.
     /// </summary>
-    private float BogeyFireAngleMinimum;
+    private float bogeyFireAngleMinimum;
 
     #region MonoBehaviour Methods
     private void Awake()
     {
-        BogeyFireAngleMinimum = settings.GameParameters.BogeyFireAngleMinimum;
+        bogeyFireAngleMinimum = settings.GameParameters.BogeyFireAngleMinimum;
         bogeyFireAngleStart = settings.GameParameters.BogeyFireAngleStart;
         bogeyFireAngle.Value = bogeyFireAngleStart;
     }
     private void OnEnable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated += UpdateBogeyFireAngle;
-        }
+        playerScore.Updated += UpdateBogeyFireAngle;
     }
     private void OnDisable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated -= UpdateBogeyFireAngle;
-        }
+        playerScore.Updated -= UpdateBogeyFireAngle;
     }
     #endregion
 
@@ -65,14 +59,15 @@ public class FireAngleAdjuster : MonoBehaviour
     /// </summary>
     private void UpdateBogeyFireAngle()
     {
-        if (playerScore.Value >= settings.GameParameters.BogeySmallSpawnThreshold)
+        if (playerScore.Value >=
+            settings.GameParameters.BogeySmallSpawnThreshold)
         {
             float accuracyIncrease = bogeyFireAngleStart *
                 ((float)playerScore.Value /
                 settings.GameParameters.BogeyFireAngleMinimumScore);
 
             bogeyFireAngle.Value = bogeyFireAngleStart - accuracyIncrease +
-                BogeyFireAngleMinimum;
+                bogeyFireAngleMinimum;
         }
     }
 }

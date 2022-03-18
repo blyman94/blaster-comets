@@ -24,17 +24,11 @@ public class PlayerLivesDisplay : MonoBehaviour
     #region MonoBehaviour Methods
     private void OnEnable()
     {
-        if (playerLives != null)
-        {
-            playerLives.Updated += UpdateLivesDisplay;
-        }
+        playerLives.Updated += UpdateLivesDisplay;
     }
     private void OnDisable()
     {
-        if (playerLives != null)
-        {
-            playerLives.Updated -= UpdateLivesDisplay;
-        }
+        playerLives.Updated -= UpdateLivesDisplay;
     }
     #endregion
 

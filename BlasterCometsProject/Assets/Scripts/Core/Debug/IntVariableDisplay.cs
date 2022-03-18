@@ -34,10 +34,7 @@ public class IntVariableDisplay : MonoBehaviour
     #region MonoBehaviour Methods
     private void OnEnable()
     {
-        if (observedVariable != null)
-        {
-            observedVariable.Updated += UpdateText;
-        }
+        observedVariable.Updated += UpdateText;
     }
     private void Start()
     {
@@ -48,10 +45,7 @@ public class IntVariableDisplay : MonoBehaviour
     }
     private void OnDisable()
     {
-        if (observedVariable != null)
-        {
-            observedVariable.Updated -= UpdateText;
-        }
+        observedVariable.Updated -= UpdateText;
     }
     #endregion
 
@@ -60,10 +54,7 @@ public class IntVariableDisplay : MonoBehaviour
     /// </summary>
     private void ResetObservedVariable()
     {
-        if (observedVariable != null)
-        {
-            observedVariable.Value = resetValue;
-        }
+        observedVariable.Value = resetValue;
     }
 
     /// <summary>

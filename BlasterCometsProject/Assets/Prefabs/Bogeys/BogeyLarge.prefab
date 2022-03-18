@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody2D: {fileID: 692309787201261196}
+  combatTarget: {fileID: 2646290519160442739}
+  exploder: {fileID: 2743493796051760524}
   weapon: {fileID: 2743493795898691867}
   hyperspace: {fileID: 0}
   rotator: {fileID: 0}

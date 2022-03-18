@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaab2fbe7a3f1743b7111e999896acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireEvent: {fileID: 11400000, guid: 585f1f4777b628a4f82d77bfb94ef8e3, type: 2}
-  ProjectileStart: {fileID: 3374253258290881779}
   aimStrategy: {fileID: 11400000, guid: b148adc813f9be844b93fe8bbe28b761, type: 2}
+  ProjectileStart: {fileID: 3374253258290881779}
   Radius: 1
+  fireEvent: {fileID: 11400000, guid: 585f1f4777b628a4f82d77bfb94ef8e3, type: 2}
 --- !u!1 &3374253257332818935
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,9 +139,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3374253257614744453}
-  - component: {fileID: 3374253257614744454}
-  - component: {fileID: 3998179754863858242}
+  - component: {fileID: 6381480443260467284}
   - component: {fileID: 896043035288507849}
+  - component: {fileID: 3998179754863858242}
   - component: {fileID: 3250837122597796759}
   - component: {fileID: 3374253257614744455}
   - component: {fileID: 3374253257614744452}
@@ -172,7 +172,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3374253257614744454
+--- !u!114 &6381480443260467284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,29 +181,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3374253257614744448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1167437868da72648895f5e5fa9c190f, type: 3}
+  m_Script: {fileID: 11500000, guid: 230c0a9630a85c8468743c26599dca90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody2D: {fileID: 3374253257614744455}
+  combatTarget: {fileID: 896043035288507849}
+  exploder: {fileID: 3998179754863858242}
   weapon: {fileID: 3374253257177161970}
   hyperspace: {fileID: 6098418071353288641}
   rotator: {fileID: 3374253258183998243}
   thruster: {fileID: 3374253258014076630}
---- !u!114 &3998179754863858242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3374253257614744448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7e30b7ab0d7bc49b9f36ea089eedde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityCollider: {fileID: 3250837122597796759}
-  entityRenderer: {fileID: 3374253258185521869}
-  entityRelay: {fileID: 3374253257614744454}
 --- !u!114 &896043035288507849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +243,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3998179754863858242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374253257614744448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7e30b7ab0d7bc49b9f36ea089eedde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityCollider: {fileID: 3250837122597796759}
+  entityRenderer: {fileID: 3374253258185521869}
+  entityRelay: {fileID: 6381480443260467284}
 --- !u!60 &3250837122597796759
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class BogeyController : MonoBehaviour, IController
     /// <summary>
     /// Bounds of the main camera.
     /// </summary>
+    [Header("General")]
     [Tooltip("Bounds of the main camera.")]
     [SerializeField] private CameraBounds cameraBounds;
 
@@ -61,9 +62,10 @@ public class BogeyController : MonoBehaviour, IController
     /// How fast will the bogey move?
     /// </summary>
     public float MoveSpeed { get; set; } = 1;
-    #endregion
 
-    #region IController Methods
+    /// <summary>
+    /// CommandRelay of the GameObject being controlled.
+    /// </summary>
     public CommandRelay RelayToControl
     {
         get
@@ -80,6 +82,13 @@ public class BogeyController : MonoBehaviour, IController
                 StartBogeyControl();
             }
         }
+    }
+    #endregion
+
+    #region IController Methods
+    public void ClearRelayToControl()
+    {
+        RelayToControl = null;
     }
     #endregion
 

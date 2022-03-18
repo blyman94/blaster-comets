@@ -7,14 +7,6 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     /// <summary>
-    /// Determines whether this ObjectPool can grow if a pool object is
-    /// requested and none are available.
-    /// </summary>
-    [Tooltip("Determines whether this ObjectPool can grow if a pool object " +
-        "requested and none are available.")]
-    [SerializeField] private bool canGrow;
-
-    /// <summary>
     /// Initial number of instances of the pool object this pool will contain.
     /// </summary>
     [Tooltip("Initial number of instances of the pool object this pool " +
@@ -58,31 +50,15 @@ public class ObjectPool : MonoBehaviour
             return pool.Pop();
         }
 
-        if (canGrow)
-        {
-            GameObject poolGameObject;
-            if (poolParent != null)
-            {
-                poolGameObject = GameObject.Instantiate(objectToPool, poolParent);
-            }
-            else
-            {
-                poolGameObject = GameObject.Instantiate(objectToPool, Vector3.zero,
-                    Quaternion.identity);
-            }
+        GameObject poolGameObject;
+        poolGameObject = GameObject.Instantiate(objectToPool, poolParent);
 
-            IPoolObject poolObject =
-                (IPoolObject)poolGameObject.GetComponent(typeof(IPoolObject));
-            if (poolObject != null)
-            {
-                poolObject.OriginPool = this;
-            }
+        IPoolObject poolObject =
+            (IPoolObject)poolGameObject.GetComponent(typeof(IPoolObject));
+        poolObject.OriginPool = this;
 
-            poolGameObject.SetActive(false);
-            return poolGameObject;
-        }
-
-        return null;
+        poolGameObject.SetActive(false);
+        return poolGameObject;
     }
 
     /// <summary>
@@ -92,10 +68,7 @@ public class ObjectPool : MonoBehaviour
     /// pool.</param>
     public void Release(GameObject gameObject)
     {
-        if (poolParent != null)
-        {
-            gameObject.transform.SetParent(poolParent);
-        }
+        gameObject.transform.SetParent(poolParent);
         gameObject.SetActive(false);
         pool.Push(gameObject);
     }
@@ -110,22 +83,11 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < initialSize; i++)
         {
             GameObject poolGameObject;
-            if (poolParent != null)
-            {
-                poolGameObject = GameObject.Instantiate(objectToPool, poolParent);
-            }
-            else
-            {
-                poolGameObject = GameObject.Instantiate(objectToPool, Vector3.zero,
-                    Quaternion.identity);
-            }
+            poolGameObject = GameObject.Instantiate(objectToPool, poolParent);
 
             IPoolObject poolObject =
                 (IPoolObject)poolGameObject.GetComponent(typeof(IPoolObject));
-            if (poolObject != null)
-            {
-                poolObject.OriginPool = this;
-            }
+            poolObject.OriginPool = this;
 
             poolGameObject.SetActive(false);
             pool.Push(poolGameObject);

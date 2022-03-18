@@ -2688,7 +2688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 5
   objectToPool: {fileID: 48593019287448825, guid: 2b16559a3a88f244e85d7db34f98fbe7, type: 3}
   poolParent: {fileID: 240705795}
@@ -3309,15 +3308,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 284527210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5c4f7d48020914589dc8c40883fabd, type: 3}
+  m_Script: {fileID: 11500000, guid: e61d82838aa2ed3459d80c639af442a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: d74cae07e6b6c054fb91e8347038d242, type: 2}
-  playerLives: {fileID: 11400000, guid: 4db9835127f9902449bfa03fa774b4d5, type: 2}
-  playerScore: {fileID: 11400000, guid: e38dbee29423a3a49a38f65cad3db195, type: 2}
-  meteoroidSpawner: {fileID: 2098613984}
-  shipSpawner: {fileID: 572244011}
-  gameStartEvent: {fileID: 11400000, guid: a08ca9478ff35084c8a7d2b325a17e3d, type: 2}
+  Event: {fileID: 11400000, guid: a08ca9478ff35084c8a7d2b325a17e3d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 4db9835127f9902449bfa03fa774b4d5, type: 2}
+        m_TargetAssemblyTypeName: IntVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: e38dbee29423a3a49a38f65cad3db195, type: 2}
+        m_TargetAssemblyTypeName: IntVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 572244011}
+        m_TargetAssemblyTypeName: ShipSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewShip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2098613984}
+        m_TargetAssemblyTypeName: MeteoroidSpawner, Assembly-CSharp
+        m_MethodName: SpawnLargeMeteoroids
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 439242a920ecc79459433cb0a85b38c3, type: 2}
+        m_TargetAssemblyTypeName: StringVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &284527212
 Transform:
   m_ObjectHideFlags: 0
@@ -4204,7 +4261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 5
   objectToPool: {fileID: 3757523202622983137, guid: 6649b3a7570ae7748ae2b1c815605ffa, type: 3}
   poolParent: {fileID: 416600066}
@@ -9434,7 +9490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 5
   objectToPool: {fileID: 8061304398218513974, guid: a20df799c98db3c4b85b01845c2ac38b, type: 3}
   poolParent: {fileID: 882839447}
@@ -9711,6 +9766,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1388955923}
         m_TargetAssemblyTypeName: MusicFader, Assembly-CSharp
         m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 572244011}
+        m_TargetAssemblyTypeName: ShipSpawner, Assembly-CSharp
+        m_MethodName: DespawnShip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13434,7 +13501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 12
   objectToPool: {fileID: 1830846599129343689, guid: eb53f00f61b3ae347a648c4c4670d185, type: 3}
   poolParent: {fileID: 1345265050}
@@ -15474,7 +15540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 24
   objectToPool: {fileID: 8303359078020874389, guid: 3ee75d45375e1d549a8f880e2de8d088, type: 3}
   poolParent: {fileID: 1594583108}
@@ -17459,15 +17524,15 @@ PrefabInstance:
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 284527211}
+      objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 284527211}
+      objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 284527211}
+      objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -18987,7 +19052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 48
   objectToPool: {fileID: 3809390334116679125, guid: 22e5afc3024d65d4d97aa1c41fccaf0b, type: 3}
   poolParent: {fileID: 1800945668}
@@ -20127,7 +20191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 12
   objectToPool: {fileID: 989486511033135835, guid: 9060de97ed1bb2e4b8c01baaa08e2b78, type: 3}
   poolParent: {fileID: 1876213413}
@@ -20691,7 +20754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2acb4f7283834d9ab24d343782b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGrow: 1
   initialSize: 3
   objectToPool: {fileID: 5325818714523050641, guid: 73c44a57872df5b47aad8dac84061013, type: 3}
   poolParent: {fileID: 1912296779}
@@ -23821,7 +23883,7 @@ PrefabInstance:
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 284527211}
+      objectReference: {fileID: 11400000, guid: a08ca9478ff35084c8a7d2b325a17e3d, type: 2}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -23852,7 +23914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: StartGame
+      value: Raise
       objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -23868,7 +23930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: GameStarter, Assembly-CSharp
+      value: GameEvent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2697805062078824532, guid: 9c5b3a13a4565ac479de09a0b824099d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName

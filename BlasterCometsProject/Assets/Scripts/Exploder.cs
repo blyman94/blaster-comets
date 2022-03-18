@@ -60,30 +60,16 @@ public class Exploder : MonoBehaviour
     {
         if (EntityController != null)
         {
-            EntityController.RelayToControl = null;
+            EntityController.ClearRelayToControl();
         }
 
-        if (entityCollider != null)
-        {
-            entityCollider.enabled = false;
-        }
+        entityCollider.enabled = false;
+        entityRenderer.gameObject.SetActive(false);
+        entityRelay.ResetRelay();
 
-        if (entityRenderer != null)
-        {
-            entityRenderer.gameObject.SetActive(false);
-        }
-
-        if (entityRelay != null)
-        {
-            entityRelay.ResetRelay();
-        }
-
-        if (ExplosionPool != null)
-        {
-            GameObject explosionObject = ExplosionPool.Get();
-            explosionObject.transform.position = transform.position;
-            explosionObject.SetActive(true);
-        }
+        GameObject explosionObject = ExplosionPool.Get();
+        explosionObject.transform.position = transform.position;
+        explosionObject.SetActive(true);
 
         EntityExploded?.Invoke();
     }
@@ -93,13 +79,7 @@ public class Exploder : MonoBehaviour
     /// </summary>
     public void Unexplode()
     {
-        if (entityRenderer != null)
-        {
-            entityRenderer.gameObject.SetActive(true);
-        }
-        if (entityCollider != null)
-        {
-            entityCollider.enabled = true;
-        }
+        entityRenderer.gameObject.SetActive(true);
+        entityCollider.enabled = true;
     }
 }

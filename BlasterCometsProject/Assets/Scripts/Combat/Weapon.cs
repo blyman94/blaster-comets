@@ -6,11 +6,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     /// <summary>
-    /// Event raised when the weapon is fired.
+    /// Dictates how the weapon will aim its projectile.
     /// </summary>
     [Header("General")]
-    [Tooltip("Event raised when the weapon is fired.")]
-    [SerializeField] private GameEvent fireEvent;
+    [Tooltip("Dictates how the weapon will aim its projectile.")]
+    [SerializeField] private AimStrategy aimStrategy;
 
     /// <summary>
     /// Transform whose position will dictate where the projectile is spawned 
@@ -21,17 +21,17 @@ public class Weapon : MonoBehaviour
     public Transform ProjectileStart;
 
     /// <summary>
-    /// Dictates how the weapon will aim its projectile.
-    /// </summary>
-    [Tooltip("Dictates how the weapon will aim its projectile.")]
-    [SerializeField] private AimStrategy aimStrategy;
-
-    /// <summary>
     /// Determines the start position of the projectile.
     /// </summary>
-    [Header("Projectile Parameters")]
     [Tooltip("Determines the start position of the projectile.")]
     public float Radius = 1;
+
+    /// <summary>
+    /// Event raised when the weapon is fired.
+    /// </summary>
+    [Header("Events")]
+    [Tooltip("Event raised when the weapon is fired.")]
+    [SerializeField] private GameEvent fireEvent;
 
     /// <summary>
     /// Timer for weapon cooldown.
@@ -85,21 +85,19 @@ public class Weapon : MonoBehaviour
     private void FireProjectile()
     {
         GameObject projectileObject = ProjectilePool.Get();
-        if (projectileObject != null)
-        {
-            Transform projectileTransform = projectileObject.transform;
-            projectileTransform.SetParent(null);
+        
+        Transform projectileTransform = projectileObject.transform;
+        projectileTransform.SetParent(null);
 
-            aimStrategy.AimProjectile(this, projectileTransform);
+        aimStrategy.AimProjectile(this, projectileTransform);
 
-            projectileObject.SetActive(true);
+        projectileObject.SetActive(true);
 
-            Projectile projectile = projectileObject.GetComponent<Projectile>();
-            projectile.Fire(ProjectileTravelSpeed, ProjectileLifetime);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Fire(ProjectileTravelSpeed, ProjectileLifetime);
 
-            fireEvent.Raise();
+        fireEvent.Raise();
 
-            cooldownTimer = Cooldown;
-        }
+        cooldownTimer = Cooldown;
     }
 }

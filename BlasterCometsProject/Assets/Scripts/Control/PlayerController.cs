@@ -6,18 +6,25 @@ using UnityEngine.InputSystem;
 /// from the Input System package.
 /// </summary>
 public class PlayerController : MonoBehaviour, IController
-{   
+{
     /// <summary>
     /// Allows the player to pause the game.
     /// </summary>
     [Tooltip("Allows the player to pause the game.")]
     [SerializeField] private GamePauser gamePauser;
 
-    #region IController Methods
+    #region Properties
     /// <summary>
     /// CommandRelay of the GameObject to be controlled.
     /// </summary>
-    public CommandRelay RelayToControl { get; set; }
+    public ShipCommandRelay RelayToControl { get; set; }
+    #endregion
+
+    #region IController Methods
+    public void ClearRelayToControl()
+    {
+        RelayToControl = null;
+    }
     #endregion
 
     #region Input Action Responses

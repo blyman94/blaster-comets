@@ -55,16 +55,13 @@ public class Thruster : MonoBehaviour
     #region MonoBehaviour Methods
     private void FixedUpdate()
     {
-        if (rigidbody2D != null)
-        {
-            bool atMaxSpeed = 
+        bool atMaxSpeed =
                 rigidbody2D.velocity.magnitude >= settings.GameParameters.ShipMaxSpeed;
-            if (Active && !atMaxSpeed)
-            {
-                rigidbody2D.AddForce(rotationTransform.up * 
-                    settings.GameParameters.ShipThrustForce * 
-                    Time.fixedDeltaTime);
-            }
+        if (Active && !atMaxSpeed)
+        {
+            rigidbody2D.AddForce(rotationTransform.up *
+                settings.GameParameters.ShipThrustForce *
+                Time.fixedDeltaTime);
         }
     }
     private void Update()

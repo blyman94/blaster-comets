@@ -44,7 +44,8 @@ public class Projectile : MonoBehaviour, IPoolObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         CombatTarget hitTarget = other.GetComponent<CombatTarget>();
-        if (hitTarget != null && targetTags.Contains(hitTarget.tag))
+        if (hitTarget != null && targetTags.Count > 0 && 
+            targetTags.Contains(hitTarget.tag))
         {
             hitTarget.TakeHit();
             hitTarget.AwardPoints();

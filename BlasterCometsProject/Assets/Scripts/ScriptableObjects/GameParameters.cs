@@ -294,11 +294,5 @@ public class GameParameters : ScriptableObject
     /// </summary>
     [Tooltip("How long it takes for the ship to respawn.")]
     public float ShipRespawnTime = 3f;
-
-    /// <summary>
-    /// Number of lives the ship starts with.
-    /// </summary>
-    [Tooltip("Number of lives the ship starts with.")]
-    public int ShipStartingLives = 3;
     #endregion
 }

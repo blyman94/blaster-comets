@@ -99,7 +99,7 @@ public class RuntimeSet : ScriptableObject
         {
             items.Remove(item);
 
-            if (Count() == 0 && onEmptyEvent != null)
+            if (Count() == 0)
             {
                 onEmptyEvent.Raise();
             }

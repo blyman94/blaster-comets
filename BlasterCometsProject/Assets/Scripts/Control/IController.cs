@@ -4,7 +4,7 @@
 public interface IController
 {
     /// <summary>
-    /// CommandRelay of the GameObject being controlled.
+    /// Clears the CommandRelay the IController is currently controlling.
     /// </summary>
-    public CommandRelay RelayToControl { get; set; }
+    public void ClearRelayToControl();
 }

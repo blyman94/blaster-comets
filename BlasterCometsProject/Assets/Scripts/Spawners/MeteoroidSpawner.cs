@@ -84,10 +84,7 @@ public class MeteoroidSpawner : MonoBehaviour
     #region MonoBehaviour Methods
     private void Start()
     {
-        if (activeMeteoroidSet != null)
-        {
-            activeMeteoroidSet.Initialize();
-        }
+        activeMeteoroidSet.Initialize();
         SpawnLargeMeteoroids();
     }
     private void Update()

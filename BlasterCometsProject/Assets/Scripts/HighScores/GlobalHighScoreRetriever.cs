@@ -53,7 +53,6 @@ public class GlobalHighScoreRetriever : MonoBehaviour
     private void Start()
     {
         LoadGlobalHighScores();
-
     }
     #endregion
 

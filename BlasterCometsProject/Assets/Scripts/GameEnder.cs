@@ -45,7 +45,6 @@ public class GameEnder : MonoBehaviour
     /// </summary>
     public void DisplayEndGameScreen()
     {
-        playerInitials.Value = "";
         int lowestScoreIndex = localHighScores.HighScores.Count - 1;
         if (playerScore.Value >= 
             localHighScores.HighScores[lowestScoreIndex].Value)

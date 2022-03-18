@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Determines if a large or small bogey should be spawned, then signals 
+/// referenced spawners to spawn the appropriate bogey.
+/// </summary>
 public class BogeySpawnHandler : MonoBehaviour
 {
     /// <summary>
@@ -45,47 +49,19 @@ public class BogeySpawnHandler : MonoBehaviour
     private bool canSpawnSmallBogeys = false;
 
     #region MonoBehaviour Methods
-    private void Awake()
-    {
-        bogeyController.MoveSpeed = settings.GameParameters.BogeyMoveSpeed;
-    }
     private void OnEnable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated += UpdateBogeyAvailability;
-        }
-        if (bogeyController != null)
-        {
-            bogeyController.Retreated += OnBogeyLifeEnd;
-        }
-        if (bogeySpawnerLarge != null)
-        {
-            bogeySpawnerLarge.BogeyDown += OnBogeyLifeEnd;
-        }
-        if (bogeySpawnerSmall != null)
-        {
-            bogeySpawnerSmall.BogeyDown += OnBogeyLifeEnd;
-        }
+        playerScore.Updated += UpdateBogeyAvailability;
+        bogeyController.Retreated += OnBogeyLifeEnd;
+        bogeySpawnerLarge.BogeyDown += OnBogeyLifeEnd;
+        bogeySpawnerSmall.BogeyDown += OnBogeyLifeEnd;
     }
     private void OnDisable()
     {
-        if (playerScore != null)
-        {
-            playerScore.Updated -= UpdateBogeyAvailability;
-        }
-        if (bogeyController != null)
-        {
-            bogeyController.Retreated -= OnBogeyLifeEnd;
-        }
-        if (bogeySpawnerLarge != null)
-        {
-            bogeySpawnerLarge.BogeyDown -= OnBogeyLifeEnd;
-        }
-        if (bogeySpawnerSmall != null)
-        {
-            bogeySpawnerSmall.BogeyDown -= OnBogeyLifeEnd;
-        }
+        playerScore.Updated -= UpdateBogeyAvailability;
+        bogeyController.Retreated -= OnBogeyLifeEnd;
+        bogeySpawnerLarge.BogeyDown -= OnBogeyLifeEnd;
+        bogeySpawnerSmall.BogeyDown -= OnBogeyLifeEnd;
     }
     #endregion
 
@@ -133,11 +109,8 @@ public class BogeySpawnHandler : MonoBehaviour
     /// </summary>
     private void OnBogeyLifeEnd()
     {
-        if (bogeyController != null)
-        {
-            bogeyController.RelayToControl.gameObject.SetActive(false);
-            bogeyController.RelayToControl = null;
-        }
+        bogeyController.RelayToControl.gameObject.SetActive(false);
+        bogeyController.RelayToControl = null;
 
         float randomTime =
                 Random.Range(settings.GameParameters.BogeySpawnDelayRange.x,
